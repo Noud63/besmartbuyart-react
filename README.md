@@ -1,7 +1,7 @@
 <h1>Be Smart Buy Art</h1> 
 
 Art webshop build in React (partially functional)<br>
-Frontend => React.js
+Frontend => React.js<br>
 Backend => Express, Node.js, mongoDB
 
 
