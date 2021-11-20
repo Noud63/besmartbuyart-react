@@ -1,8 +1,8 @@
 <h1>Be Smart Buy Art</h1> 
 
-Art webshop build in React (partially functional)<br>
+Art webshop build in create-react-app (partially functional).<br>
 Frontend => React.js<br>
-Backend => Express, Node.js, mongoDB
+Backend => Express, Node.js, mongoDB<br><br>
 
 
 ![buyart1](https://user-images.githubusercontent.com/38325801/139448086-c3093177-fafa-4e79-9eee-e166388e9957.png)<br><br>
