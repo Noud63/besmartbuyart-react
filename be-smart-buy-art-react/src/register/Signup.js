@@ -1,11 +1,11 @@
 import React from 'react'
 import signupstyle from './Signup.module.css'
 import Signupform from './Signupform'
+import axios from 'axios'
 
 const Signup = () => {
 
     const [overlay, setOverlay] = React.useState(false)
-    const [data, setData] = React.useState({})
     const [firstname, setFirstname] = React.useState('')
 
     React.useEffect(() => {
@@ -17,7 +17,12 @@ const Signup = () => {
         return () => clearTimeout(timer);
     }, [overlay])
 
-    console.log(data)
+
+    const registerUser = (data) =>{
+        axios.post('http://localhost:3000/signup', data)
+        .then(()=> {})
+        console.log(data)
+    }
 
     return (
         <>
@@ -25,7 +30,7 @@ const Signup = () => {
                 <div className={signupstyle.wrapper2}>
                     <div className={signupstyle.register}>Register</div>
 
-                    <Signupform setOverlay={setOverlay} setFirstname={setFirstname} setData={setData} />
+                    <Signupform setOverlay={setOverlay} setFirstname={setFirstname} registerUser={registerUser}/>
 
                 </div>
             </div>

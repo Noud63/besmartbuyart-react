@@ -2,14 +2,15 @@ import React from 'react'
 import signupstyle from './Signup.module.css'
 import { useForm } from "react-hook-form";
 
-const Signupform = ({ setOverlay, setFirstname, setData }) => {
+
+const Signupform = ({ setOverlay, setFirstname, registerUser }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = data => {
         if (data) {
-            setData(data)
             setOverlay(true)
+            registerUser(data)
         }
         const firstname = data.name.split(' ')[0]
         setFirstname(firstname)
@@ -34,7 +35,7 @@ const Signupform = ({ setOverlay, setFirstname, setData }) => {
                 <div className={signupstyle.textInput}><label htmlFor="address" className={signupstyle.pass}>Address: </label>
                     <input type="text" placeholder="" name="address" {...register("address", { required: 'address and number required!' })} />
                     <label htmlFor="number" className={signupstyle.numLabel}>Num:</label>
-                    <input type="text" placeholder="" className={signupstyle.number} />
+                    <input type="text" placeholder="" className={signupstyle.number} name="number" {...register("number", { required: 'number required!' })}/>
                 </div>
                 <div className={signupstyle.error} style={{ color: 'red', marginBottom: '10px' }}>
                     {errors.address && <div>{errors.address.message}</div>}

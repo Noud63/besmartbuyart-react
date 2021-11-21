@@ -58,15 +58,16 @@ const Checkout = () => {
                         <div className={checkoutstyles.register}>
                             <div className={checkoutstyles.shippingAddress}>Shipping address</div>
                             <div className={checkoutstyles.formContainer}>
+
                                 <form action="" onSubmit={handleSubmit(onSubmit, onErrors)} className={checkoutstyles.form}>
 
                                     <div className={checkoutstyles.labelField}>
                                         <div className={checkoutstyles.label}><label htmlFor="name">Name: </label>
-                                        <ErrorMessage errors={errors} name="name2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                            <ErrorMessage errors={errors} name="name2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
                                         </div>
                                         <div className={checkoutstyles.labelInput}><input type="text" name="name2" {...register("name2", { required: 'name required!' })} /></div>
                                     </div>
-                                    
+
                                     <div className={checkoutstyles.labelField}>
                                         <div className={checkoutstyles.label}><label htmlFor="address">Address: </label></div>
                                         <div className={checkoutstyles.addressbar}>
@@ -101,6 +102,7 @@ const Checkout = () => {
                                     <div className={checkoutstyles.confirm}><button type="submit" className={checkoutstyles.btn}>Confirm</button></div>
 
                                 </form>
+
                             </div>
                         </div>
 
