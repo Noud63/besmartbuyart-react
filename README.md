@@ -2,7 +2,7 @@
 
 Art webshop build in create-react-app (partially functional).<br>
 Frontend => React.js<br>
-Backend => Express, Node.js, mongoDB<br><br>
+Backend => Express, Node.js, mongoDB (Atlas), mongoose<br><br>
 
 
 ![buyart1](https://user-images.githubusercontent.com/38325801/139448086-c3093177-fafa-4e79-9eee-e166388e9957.png)<br><br>
