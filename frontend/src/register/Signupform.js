@@ -8,11 +8,12 @@ const Signupform = ({ setOverlay, setFirstname, registerUser }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = data => {
+        console.log(data)
         if (data) {
             setOverlay(true)
             registerUser(data)
         }
-        const firstname = data.name.split(' ')[0]
+        const firstname = data.firstname
         setFirstname(firstname)
         reset()
     };
@@ -22,12 +23,21 @@ const Signupform = ({ setOverlay, setFirstname, registerUser }) => {
     return (
         <form action="" onSubmit={handleSubmit(onSubmit, onErrors)} className={signupstyle.form}>
 
-            <div className={signupstyle.name}>
-                <div className={signupstyle.textInput}><label htmlFor="name" className={signupstyle.pass}>Name: </label>
-                    <input type="text" placeholder="" name="name" {...register("name", { required: 'name required!' })} />
+            <div className={signupstyle.firstname}>
+                <div className={signupstyle.textInput}><label htmlFor="firstname" className={signupstyle.pass}>Firstname: </label>
+                    <input type="text" placeholder="" name="firstname" {...register("firstname", { required: 'firstname required!' })} />
                 </div>
                 <div className={signupstyle.error} style={{ color: 'red', marginBottom: '10px' }}>
-                    {errors.name && <div>{errors.name.message}</div>}
+                    {errors.firstname && <div>{errors.firstname.message}</div>}
+                </div>
+            </div>
+
+            <div className={signupstyle.lastname}>
+                <div className={signupstyle.textInput}><label htmlFor="lastname" className={signupstyle.pass}>Lastname: </label>
+                    <input type="text" placeholder="" name="lastname" {...register("lastname", { required: 'lastname required!' })} />
+                </div>
+                <div className={signupstyle.error} style={{ color: 'red', marginBottom: '10px' }}>
+                    {errors.lastname && <div>{errors.lastname.message}</div>}
                 </div>
             </div>
 

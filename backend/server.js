@@ -21,14 +21,30 @@ app.get('/', (req, res) => {
    res.send('API is running!')
 })
 
-app.post('/signup', (req, res) => {
-   const data = req.body
-   console.log(data)
-   const user = new User(data)
-   user.save().then((userinfo) => {
-      console.log(userinfo)
-      res.send({ body: '' })
-   })
+app.post('/users', async (req, res) => {
+   let { firstname, lastname, email, password, repeatpassword,
+      address, number, telephone, city, country } = req.body
+
+   try {
+      let user = await User.findOne({ email: email })
+
+      if (user) {
+         res.status(400)
+         throw new Error('User already exists')
+      }
+      user = new User({
+         firstname, lastname, email, password,repeatpassword, address, 
+         number, telephone, city, country
+      })
+
+      user = await user.save();
+      res.send(user);
+
+   } catch (err) {
+      console.log(err);
+      res.status(500).send("Something went wrong");
+   }
+
 })
 
 app.use('/', require('./routes/artworkRoute'))

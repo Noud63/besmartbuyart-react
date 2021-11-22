@@ -5,7 +5,8 @@ const router = express.Router()
 const User = require('../models/userModel')
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { name,
+    const { firstname,
+        lastname,
         email,
         password,
         repeatpassword,
@@ -15,15 +16,9 @@ const registerUser = asyncHandler(async (req, res) => {
         city,
         country } = req.body
 
-    const userExists = await User.findOne({ email: email })
-
-    if (userExists) {
-        res.status(400)
-        throw new Error('User already exists')
-    }
-
-    const user = await User.create({
-        name,
+const user = await User.create({
+        firstname,
+        lastname,
         email,
         password,
         repeatpassword,
@@ -37,7 +32,8 @@ const registerUser = asyncHandler(async (req, res) => {
     if (user) {
         res.status(201).json({
             _id: user._id,
-            name: user.name,
+            firstname: user.firstname,
+            lastname: user.lastname,
             email: user.email,
             password: user.password,
             repeatpassword: user.repeatpassword,

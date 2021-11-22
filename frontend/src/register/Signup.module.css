@@ -34,7 +34,7 @@
     flex-direction: column;
 }
 
-.name {
+.lastname, .firstname {
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -42,6 +42,13 @@
     flex-direction: column;
 }
 
+.name {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
 .textInput {
     width: 100%;
     display: flex;
@@ -88,7 +95,8 @@ input[name="address"] {
     font-size: 1rem;
 }
 
-input[name="name"], 
+input[name="lastname"], 
+input[name="firstname"], 
 input[name="email"],
 input[name="country"], 
 input[name="city"],
@@ -160,10 +168,10 @@ label {
         width: 90%;
         
     }
-    .name, .address2 {
+    .name, .address2, .lastname, .firstname {
         flex-direction: column;
         align-items: flex-start;
-        padding: 0 10px;
+        padding: 0 2px;
     }
 
     .textInput {

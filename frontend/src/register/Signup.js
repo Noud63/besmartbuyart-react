@@ -6,6 +6,7 @@ import axios from 'axios'
 const Signup = () => {
 
     const [overlay, setOverlay] = React.useState(false)
+    const [error, setError] = React.useState(false)
     const [firstname, setFirstname] = React.useState('')
 
     React.useEffect(() => {
@@ -13,15 +14,24 @@ const Signup = () => {
             if (overlay) {
                 setOverlay(false)
             }
+            if (error) {
+                setError(false)
+            }
         }, 6000)
         return () => clearTimeout(timer);
-    }, [overlay])
+    }, [overlay, error])
 
 
-    const registerUser = (data) =>{
-        axios.post('http://localhost:3000/signup', data)
-        .then(()=> {})
-        console.log(data)
+    const registerUser = async (data) => {
+        try {
+            const response = await axios.post('http://localhost:3000/signup', data)
+            console.log(response.status, response.statusText)
+            setOverlay(true)
+        } catch (error) {
+            setError(true)
+            setOverlay(false)
+            console.log({ errorMessage: error.message })
+        }
     }
 
     return (
@@ -30,7 +40,7 @@ const Signup = () => {
                 <div className={signupstyle.wrapper2}>
                     <div className={signupstyle.register}>Register</div>
 
-                    <Signupform setOverlay={setOverlay} setFirstname={setFirstname} registerUser={registerUser}/>
+                    <Signupform setOverlay={setOverlay} setFirstname={setFirstname} registerUser={registerUser} />
 
                 </div>
             </div>
@@ -39,6 +49,13 @@ const Signup = () => {
                 <div className={signupstyle.registerednameShow}>
                     <div>{`Hi ${firstname}!`}</div>
                     <div className={signupstyle.welcome}>Welcome to <span className={signupstyle.bsba}>BSBA.</span></div>
+                </div>
+            </div> : ""}
+
+            {error ? <div className={signupstyle.overlayShow}>
+                <div className={signupstyle.registerednameShow}>
+                    <div>{`Oooops!`}</div>
+                    <div className={signupstyle.welcome}>Email already registered</div>
                 </div>
             </div> : ""}
         </>
