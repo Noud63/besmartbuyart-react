@@ -3,14 +3,14 @@ import signupstyle from './Signup.module.css'
 import { useForm } from "react-hook-form";
 
 
-const Signupform = ({ setOverlay, setFirstname, registerUser }) => {
+const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = data => {
         if (data) {
             setOverlay(true)
-            registerUser(data)
+            getUserData(data)
         }
         const firstname = data.firstname
         setFirstname(firstname)

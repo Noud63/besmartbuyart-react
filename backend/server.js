@@ -8,7 +8,6 @@ const router = express.Router()
 const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
 const addDataToCollection = require('./seeder')
-//const User = require('./models/userModel')
 const registerUser = require('./routes/userRoute')
 
 app.use(cors())
@@ -23,32 +22,6 @@ app.get('/', (req, res) => {
 })
 
 router.route('/users').post(registerUser)
-
-// app.post('/users', async (req, res) => {
-//    let { firstname, lastname, email, password, repeatpassword,
-//       address, number, telephone, city, country } = req.body
-
-//    try {
-//       let user = await User.findOne({ email: email })
-
-//       if (user) {
-//          res.status(400)
-//          throw new Error('User already exists')
-//       }
-//       user = new User({
-//          firstname, lastname, email, password,repeatpassword, address, 
-//          number, telephone, city, country
-//       })
-
-//       user = await user.save();
-//       res.send(user);
-
-//    } catch (err) {
-//       console.log(err);
-//       res.status(500).send("Something went wrong");
-//    }
-
-// })
 
 app.use('/', require('./routes/artworkRoute'))
 app.use('/', require('./routes/userRoute'))

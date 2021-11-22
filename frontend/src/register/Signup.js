@@ -22,7 +22,7 @@ const Signup = () => {
     }, [overlay, error])
 
 
-    const registerUser = async (data) => {
+    const getUserData = async (data) => {
         try {
             const response = await axios.post('http://localhost:5000/users', data)
             console.log(response.status, response.statusText)
@@ -40,7 +40,7 @@ const Signup = () => {
                 <div className={signupstyle.wrapper2}>
                     <div className={signupstyle.register}>Register</div>
 
-                    <Signupform setOverlay={setOverlay} setFirstname={setFirstname} registerUser={registerUser} />
+                    <Signupform setOverlay={setOverlay} setFirstname={setFirstname} getUserData={getUserData} />
 
                 </div>
             </div>
