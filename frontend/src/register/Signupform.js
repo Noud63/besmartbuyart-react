@@ -8,7 +8,6 @@ const Signupform = ({ setOverlay, setFirstname, registerUser }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
         if (data) {
             setOverlay(true)
             registerUser(data)

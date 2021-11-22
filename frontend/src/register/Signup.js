@@ -24,7 +24,7 @@ const Signup = () => {
 
     const registerUser = async (data) => {
         try {
-            const response = await axios.post('http://localhost:3000/signup', data)
+            const response = await axios.post('http://localhost:5000/users', data)
             console.log(response.status, response.statusText)
             setOverlay(true)
         } catch (error) {
@@ -55,7 +55,7 @@ const Signup = () => {
             {error ? <div className={signupstyle.overlayShow}>
                 <div className={signupstyle.registerednameShow}>
                     <div>{`Oooops!`}</div>
-                    <div className={signupstyle.welcome}>Email already registered</div>
+                    <div className={signupstyle.welcome}>Email already exists!</div>
                 </div>
             </div> : ""}
         </>

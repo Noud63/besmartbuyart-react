@@ -4,48 +4,51 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const colors = require('colors')
+const router = express.Router()
 const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
 const addDataToCollection = require('./seeder')
-const User = require('./models/userModel')
+//const User = require('./models/userModel')
+const registerUser = require('./routes/userRoute')
 
 app.use(cors())
 app.use(express.json())
 dotenv.config()
 
 connectDB()
-
 addDataToCollection()
 
 app.get('/', (req, res) => {
-   res.send('API is running!')
+   console.log('API is running....')
 })
 
-app.post('/users', async (req, res) => {
-   let { firstname, lastname, email, password, repeatpassword,
-      address, number, telephone, city, country } = req.body
+router.route('/users').post(registerUser)
 
-   try {
-      let user = await User.findOne({ email: email })
+// app.post('/users', async (req, res) => {
+//    let { firstname, lastname, email, password, repeatpassword,
+//       address, number, telephone, city, country } = req.body
 
-      if (user) {
-         res.status(400)
-         throw new Error('User already exists')
-      }
-      user = new User({
-         firstname, lastname, email, password,repeatpassword, address, 
-         number, telephone, city, country
-      })
+//    try {
+//       let user = await User.findOne({ email: email })
 
-      user = await user.save();
-      res.send(user);
+//       if (user) {
+//          res.status(400)
+//          throw new Error('User already exists')
+//       }
+//       user = new User({
+//          firstname, lastname, email, password,repeatpassword, address, 
+//          number, telephone, city, country
+//       })
 
-   } catch (err) {
-      console.log(err);
-      res.status(500).send("Something went wrong");
-   }
+//       user = await user.save();
+//       res.send(user);
 
-})
+//    } catch (err) {
+//       console.log(err);
+//       res.status(500).send("Something went wrong");
+//    }
+
+// })
 
 app.use('/', require('./routes/artworkRoute'))
 app.use('/', require('./routes/userRoute'))
