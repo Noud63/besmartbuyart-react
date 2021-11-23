@@ -7,7 +7,22 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
+    const [error, setError] = React.useState(false)
+
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            if (error) {
+                setError(false)
+            }
+        }, 5000)
+        return () => clearTimeout(timer);
+    }, [error])
+
     const onSubmit = data => {
+        if(data.password !== data.repeatpassword){
+            setError(true)
+            return
+        }
         if (data) {
             setOverlay(true)
             getUserData(data)
@@ -88,6 +103,17 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
                 </div>
             </div>
 
+            <div className={signupstyle.choose}>Choose a username and password</div>
+
+            <div className={signupstyle.name}>
+                <div className={signupstyle.textInput}><label htmlFor="username" className={signupstyle.pass}>Username: </label>
+                    <input type="text" placeholder="" name="username" {...register("username", { required: 'username required!' })} />
+                </div>
+                <div className={signupstyle.error} style={{ color: 'red', marginBottom: '10px' }}>
+                    {errors.username && <div>{errors.username.message}</div>}
+                </div>
+            </div>
+
             <div className={signupstyle.name}>
                 <div className={signupstyle.textInput}><label htmlFor="password" className={signupstyle.pass}>Password: </label>
                     <input type="text" placeholder="" name="password" {...register("password", { required: 'password required!' })} />
@@ -106,6 +132,12 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
                 </div>
             </div>
 
+            {error ? <div className={signupstyle.overlayShow}>
+                <div className={signupstyle.registerednameShow}>
+                    <div>{`Oooops!`}</div>
+                    <div className={signupstyle.welcome}>Passwords don't match!</div>
+                </div>
+            </div> : ""}
 
             <button type="submit" className={signupstyle.btn}>Submit</button>
 

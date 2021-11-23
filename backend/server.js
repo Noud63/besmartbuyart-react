@@ -14,6 +14,7 @@ app.use(cors())
 app.use(express.json())
 dotenv.config()
 
+
 connectDB()
 addDataToCollection()
 
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 router.route('/users').post(registerUser)
 
 app.use('/', require('./routes/artworkRoute'))
-app.use('/', require('./routes/userRoute'))
+app.use('/', registerUser)
 
 app.listen(PORT, () => {
    console.log(`Server running on port ${PORT}`.yellow)
