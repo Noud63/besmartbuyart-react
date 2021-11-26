@@ -30,7 +30,7 @@ const Signup = () => {
         } catch (error) {
             setError(true)
             setOverlay(false)
-            console.log({ errorMessage: error.message })
+            console.log(error.message)
         }
     }
 

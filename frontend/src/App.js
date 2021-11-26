@@ -7,7 +7,7 @@ import Paintings from './paintings/Paintings'
 import Likes from './likes/Likes'
 import Cart from './cart/Cart'
 import Checkout from './checkout/Checkout'
-import Signin from './register/Signin'
+import Signin from './signin/Signin'
 import Signup from './register/Signup'
 import {
   BrowserRouter as Router,

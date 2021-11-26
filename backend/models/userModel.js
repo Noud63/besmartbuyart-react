@@ -4,68 +4,53 @@ const bcrypt = require('bcrypt')
 const userSchema = mongoose.Schema({
     firstname: {
         type: String,
-        required: true
+        // required: false
     },
     lastname: {
         type: String,
-        required: true
+        // required: false
     },
     address: {
         type: String,
-        required: true
+        // required: false
     },
     country: {
         type: String,
-        required: true
+        // required: false
     },
     city: {
         type: String,
-        required: true
+        // required: false
     },
     telephone: {
         type: Number,
-        required: true
+        // required: false
     },
     email: {
         type: String,
-        required: true
+        // required: false
     },
     number: {
         type: Number,
-        required: true
+        // required: false
     },
     username: {
         type: String,
-        required: true
+        // required: false
     },
     password: {
         type: String,
-        required: true
+        // required: false
     },
     repeatpassword: {
         type: String,
-        required: true
+        // required: false
     },
 },
     {
-        timestamps: true
+        timestamps: false
     }
 )
-
-userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next()
-    try {
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(this.password, salt)
-        const hashedRepeatPassword = await bcrypt.hash(this.repeatpassword, salt)
-        this.password = hashedPassword
-        this.repeatpassword = hashedRepeatPassword
-        console.log(hashedPassword)
-        next()
-    } catch (error) {
-        next(error)
-    }
-})
 
 const User = mongoose.model('users', userSchema)
 

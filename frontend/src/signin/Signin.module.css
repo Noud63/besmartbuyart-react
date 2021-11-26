@@ -114,3 +114,51 @@ input[type="checkbox"] {
     background-color: green;
     color: white;
 }
+
+.overlayShow {
+    position: fixed;
+    left:0;
+    right:0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(41, 41, 41, .5);
+    z-index: 10;
+}
+
+.registerednameShow {
+    margin: 200px auto;
+    width: 300px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color:  rgb(221, 125, 0);
+    border-radius: 10px;
+    font-size: 1.4rem;
+    color: rgb(34, 34, 34);
+    padding: 15px;
+    border: 1px solid rgb(34, 34, 34);
+    box-shadow: 0px 2px 18px rgb(53, 53, 53);
+    animation:fadein 2s;
+}
+
+@keyframes fadein {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+.welcome {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

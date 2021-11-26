@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-//import products from './products'
 import axios from 'axios'
 
 const allData = React.createContext()
@@ -10,7 +9,6 @@ const Context = ({ children }) => {
     const [cart, setCart] = React.useState([]);
     const [paintings, setPaintings] = React.useState([])
 
-
     let [total, setTotal] = React.useState(0)
     let [vat, setVat] = React.useState(0)
     let [price, setPrice] = React.useState(0)
@@ -18,9 +16,9 @@ const Context = ({ children }) => {
 
 
     const loadProducts = useCallback(() => {
-        
+
         if (localStorage.getItem("PAINTINGS")) return
-        
+
         const fetchData = async () => {
             try {
                 await axios.get('artworks').then(res => {
