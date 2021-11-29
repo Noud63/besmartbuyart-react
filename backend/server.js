@@ -13,7 +13,6 @@ app.use(cors())
 app.use(express.json())
 dotenv.config()
 
-
 connectDB()
 addDataToCollection()
 

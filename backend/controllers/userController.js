@@ -4,31 +4,28 @@ const registerUser = async (req, res) => {
 
     const { firstname, lastname, email, password, repeatpassword,
         username, address, number, telephone, city, country } = req.body
-   try{
-    
-       const userExist = await User.findOne({ email: email })
+    try {
 
-       if (userExist) {
-           res.status(400)
-           throw new Error('User already exists')
-       }else if(!userExist){
+        const userExist = await User.findOne({ email: email })
 
-           //add hashed password here
+        if (userExist) {
+            return res.status(400).json({ error: 'Email already exist' });
+        }
 
-           let user = new User({
-               firstname, lastname, email, password, repeatpassword,
-               username, address, number, telephone, city, country
-           })
+        let user = new User({
+            firstname, lastname, email, password, repeatpassword,
+            username, address, number, telephone, city, country
+        })
 
-           user = await user.save((err, doc) => {
-               if (err) return console.error(err);
-               console.log("User added successfully!");
-           })
-           res.send(user)
-       }
-    }catch(error){
-       console.log(error)
-   }
+        user = await user.save((err, doc) => {
+            if (err) return console.error(err);
+            console.log("User added successfully!");
+        })
+        res.send(user)
+
+    } catch (error) {
+        console.log(error)
+    }
 };
 
 module.exports = registerUser

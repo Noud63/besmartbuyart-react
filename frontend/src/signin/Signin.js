@@ -33,8 +33,7 @@ const Signin = () => {
         }
     }
 
-
-    return (
+return (
         <div className={signinStyle.container}>
             <div className={signinStyle.wrapper}>
                 <div className={signinStyle.login}>Signin</div>

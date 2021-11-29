@@ -1,16 +1,19 @@
 const Logins = require('../models/loginModel')
 const User = require('../models/userModel')
+const bcrypt = require('bcrypt')
 
 const loginUser = async (req, res) => {
     const { username, password } = req.body
     try {
 
-        const userExist = await User.findOne({ username: username, password: password })
+        const userExist = await User.findOne({ username: username})
 
-        if (!userExist) {
+        const isMatch = await bcrypt.compare(password, userExist.password)
+
+        if (!isMatch) {
             res.status(400)
             res.send('Invalid username or password!')
-        } else if (userExist) {
+        } else if (isMatch) {
             //add hashed password here
 
             let logins = new Logins({
@@ -26,8 +29,6 @@ const loginUser = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-
-
 };
 
 module.exports = loginUser

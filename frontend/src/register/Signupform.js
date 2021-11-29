@@ -32,10 +32,9 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
             setError2(true)
             return
         }
-        if (data) {
-            setOverlay(true)
-            getUserData(data)
-        }
+
+        getUserData(data)
+
         const firstname = data.firstname
         setFirstname(firstname)
         reset()
