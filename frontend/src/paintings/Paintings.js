@@ -13,9 +13,9 @@ return (
                 <div className="listContainer">
                     <div className="paintingsList">
                         {paintings.map(product => {
-                            const { _id, name, price, imgSrc, like, artNr, technique } = product
+                            const { _id, name, price, imgSrc, imgBig, like, artNr, technique } = product
                             return (
-                                <ListItems key={_id} _id={_id} name={name} price={price} imgSrc={imgSrc} like={like} artNr={artNr} technique={technique}/>
+                                <ListItems key={_id} _id={_id} name={name} price={price} imgSrc={imgSrc} like={like} artNr={artNr} technique={technique} imgBig={imgBig}/>
                             )
                         })}
                     </div>

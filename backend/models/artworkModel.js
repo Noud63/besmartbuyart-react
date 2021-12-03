@@ -25,6 +25,10 @@ const artworkSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    imgBig: {
+        type: String,
+        required: true
+    },
     numberOfUnits: {
         type: Number,
         required: true

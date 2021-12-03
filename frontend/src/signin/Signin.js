@@ -48,8 +48,8 @@ return (
                         <div className={signinStyle.welcome}><span>Invalid password</span><span>or username!</span></div>
                     </div>
                 </div> : ""}
-            </div>
 
+            </div>
         </div>
     )
 }

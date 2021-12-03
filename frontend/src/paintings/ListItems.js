@@ -1,7 +1,8 @@
 import React from 'react'
 import { useGlobalContext } from '../Context';
+import { SRLWrapper } from "simple-react-lightbox";
 
-const ListItems = ({ _id, name, price, imgSrc, like, artNr, technique }) => {
+const ListItems = ({ _id, name, price, imgSrc, imgBig, like, artNr, technique }) => {
 
     let { liked, paintings, setPaintings, cart, setCart } = useGlobalContext()
 
@@ -35,8 +36,26 @@ const ListItems = ({ _id, name, price, imgSrc, like, artNr, technique }) => {
         localStorage.setItem('LIKES', JSON.stringify(liked))
     }
 
+    const options = {
+        buttons: {
+            iconColor: "#ffffff",
+            iconPadding: "10px",
+            backgroundColor: "transparent",
+        },
+        caption: {
+            captionColor: "#61O6O4",
+            captionFontSize: "20px",
+        },
+        settings: {
+            overlayColor: "rgb(71, 71, 71, .7)",
+        },
+        thumbnails: {
+            showThumbnails: false,
+        },
+    };
 
-    return (
+
+return (
 
         <div className="item" key={_id}>
 
@@ -50,9 +69,13 @@ const ListItems = ({ _id, name, price, imgSrc, like, artNr, technique }) => {
                 <img src={process.env.PUBLIC_URL + '/icons/bag-plus.png'} alt="" />
             </div >
 
-            <div className="pic">
-                <img src={process.env.PUBLIC_URL + `${imgSrc}`} alt={name} className="paintingPic" />
-            </div>
+            <SRLWrapper options={options}>
+                <div className="pic">
+                <a href={process.env.PUBLIC_URL + `${imgBig}`}>
+                        <img src={process.env.PUBLIC_URL + `${imgSrc}`} alt={name} className="paintingPic" />
+                    </a>
+                </div>
+            </SRLWrapper>
 
             <div className="info">
                 <div><span>Title: </span>{name}</div>

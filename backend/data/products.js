@@ -6,6 +6,7 @@ const products = [
         "price": 6950,
         "instock": 100,
         "imgSrc": "/img/disco.jpg",
+        "imgBig": "/img/discofullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -16,6 +17,7 @@ const products = [
         "price": 8950,
         "instock": 43,
         "imgSrc": "/img/enigma.jpg",
+        "imgBig": "/img/enigmafullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -26,6 +28,7 @@ const products = [
         "price": 9000,
         "instock": 100,
         "imgSrc": "/img/hotel.jpg",
+        "imgBig": "/img/hotelfullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -36,6 +39,7 @@ const products = [
         "price": 7950,
         "instock": 100,
         "imgSrc": "/img/ufo.jpg",
+        "imgBig": "/img/ufofullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -46,6 +50,7 @@ const products = [
         "price": 6950,
         "instock": 100,
         "imgSrc": "/img/panorama.jpg",
+        "imgBig": "/img/panoramafullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -56,6 +61,7 @@ const products = [
         "price": 10950,
         "instock": 100,
         "imgSrc": "/img/teotu2.jpg",
+        "imgBig": "/img/teotu2fullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -66,6 +72,7 @@ const products = [
         "price": 8950,
         "instock": 100,
         "imgSrc": "/img/taxonomy.jpg",
+        "imgBig": "/img/taxonomyfullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -76,6 +83,7 @@ const products = [
         "price": 9050,
         "instock": 100,
         "imgSrc": "/img/patchwork.jpg",
+        "imgBig": "/img/patchworkfullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -86,6 +94,7 @@ const products = [
         "price": 9900,
         "instock": 100,
         "imgSrc": "/img/teotu3.jpg",
+        "imgBig": "/img/teotu3fullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -96,6 +105,7 @@ const products = [
         "price": 9958,
         "instock": 100,
         "imgSrc": "/img/thepresent.jpg",
+        "imgBig": "/img/thepresentfullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -106,6 +116,7 @@ const products = [
         "price": 9999,
         "instock": 100,
         "imgSrc": "/img/cow.jpg",
+        "imgBig": "/img/cowfullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -116,6 +127,7 @@ const products = [
         "price": 10000,
         "instock": 100,
         "imgSrc": "/img/mindthegap.jpg",
+        "imgBig": "/img/mindthegapfullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -126,6 +138,7 @@ const products = [
         "price": 7900,
         "instock": 100,
         "imgSrc": "/img/teotu.jpg",
+        "imgBig": "/img/teotufullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -136,6 +149,7 @@ const products = [
         "price": 9858,
         "instock": 100,
         "imgSrc": "/img/disco2.jpg",
+        "imgBig": "/img/disco2fullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -146,6 +160,7 @@ const products = [
         "price": 9999,
         "instock": 100,
         "imgSrc": "/img/gttp.jpg",
+        "imgBig": "/img/gttpfullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     },
@@ -156,6 +171,7 @@ const products = [
         "price": 10500,
         "instock": 100,
         "imgSrc": "/img/mindthegap2.jpg",
+        "imgBig": "/img/mindthegap2fullsize.jpg",
         "numberOfUnits": 1,
         "like": false
     }

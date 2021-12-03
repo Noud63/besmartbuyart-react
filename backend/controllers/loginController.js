@@ -7,18 +7,14 @@ const loginUser = async (req, res) => {
     try {
 
         const userExist = await User.findOne({ username: username})
-
         const isMatch = await bcrypt.compare(password, userExist.password)
 
         if (!isMatch) {
             res.status(400)
             res.send('Invalid username or password!')
         } else if (isMatch) {
-            //add hashed password here
 
-            let logins = new Logins({
-                username, password
-            })
+            let logins = new Logins({username, password})
 
             logins = await logins.save((err, doc) => {
                 if (err) return console.error(err);

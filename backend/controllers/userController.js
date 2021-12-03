@@ -1,3 +1,4 @@
+
 const User = require('../models/userModel')
 
 const registerUser = async (req, res) => {
@@ -17,9 +18,10 @@ const registerUser = async (req, res) => {
             username, address, number, telephone, city, country
         })
 
-        user = await user.save((err, doc) => {
+        user = await user.save((err, doc) => {              // doc = saved user object
             if (err) return console.error(err);
             console.log("User added successfully!");
+            console.log(doc)
         })
         res.send(user)
 

@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { Context } from './Context'
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Context>
-    <App />
-    </Context>
-  </React.StrictMode>,
+  <SimpleReactLightbox>
+      <Context>
+        <App />
+      </Context>
+    </SimpleReactLightbox>,
   document.getElementById('root')
 );
 
