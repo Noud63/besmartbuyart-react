@@ -3,10 +3,10 @@ import cartStyles from './Cart.module.css'
 
 const NumberOfUnits = ({ id, cart, setCart, numberOfUnits, price }) => {
 
-     const changeNumberOfUnits = (action, id) => {
-        cart = cart.map(el => {
+    const changeNumberOfUnits = (action, id) => {
 
-            if (el.id === id) {
+        cart = cart.map(el => {
+            if (el._id === id) {
                 if (action === "plus" && el.numberOfUnits < el.instock) {
                     el.numberOfUnits++
                 } else if (action === "minus" && el.numberOfUnits > 1) {
@@ -21,7 +21,7 @@ const NumberOfUnits = ({ id, cart, setCart, numberOfUnits, price }) => {
 
     return (
         <>
-        <div className={cartStyles.unitsAndPrice}>
+            <div className={cartStyles.unitsAndPrice}>
                 <div className={cartStyles.units}>
                     <div className={cartStyles.btnMinus} onClick={() => changeNumberOfUnits('minus', id)}>
                         <img src={process.env.PUBLIC_URL + '/icons/minus.png'} alt="minus" />
@@ -34,8 +34,8 @@ const NumberOfUnits = ({ id, cart, setCart, numberOfUnits, price }) => {
                 <div className={cartStyles.unitPrice}>
                     &euro; {price * numberOfUnits},-
             </div>
-        </div>
-            
+            </div>
+
         </>
     )
 }

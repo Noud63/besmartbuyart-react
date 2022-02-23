@@ -6,7 +6,7 @@ import { useGlobalContext } from '../Context';
 const Paintings = () => {
 
     let { paintings } = useGlobalContext()
-   
+
 return (
         <div>
             <div className="wrapper">

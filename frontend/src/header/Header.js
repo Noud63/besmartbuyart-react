@@ -7,8 +7,20 @@ import Likes from '../likes/Likes'
 const Header = () => {
 
     let { cart, liked } = useGlobalContext()
+
     const [redHeart, setRedHeart] = React.useState(false)
     const [showLikes, setShowLikes] = React.useState(false)
+    const [scrolled, setScrolled] = React.useState(true);
+
+    const handleScroll = () => {
+        const offset = window.scrollY;
+        if (offset > 50) {
+            setScrolled(false);
+        }
+        else {
+            setScrolled(true);
+        }
+    }
 
     const colorHeart = useCallback(() => {
         if (liked.length > 0) {
@@ -20,12 +32,12 @@ const Header = () => {
 
     React.useEffect(() => {
         colorHeart()
+        window.addEventListener('scroll', handleScroll)
     }, [colorHeart]);
 
 
     const showOverlay = (e) => {
-       
-        if ((liked.length === 0 && showLikes === true)) {
+       if ((liked.length === 0 && showLikes === true)) {
             setShowLikes(false)
         }
 
@@ -33,10 +45,10 @@ const Header = () => {
 
         setShowLikes(!showLikes)
         return e.target
-}
+       }
 
     return (
-        <div className={headerstyle.header}>
+        <div className={scrolled ? headerstyle.header : headerstyle.header + ' ' + headerstyle.hide}>
 
             <div className={headerstyle.homeLink}>
                 <Link to="/" className={headerstyle.link}>

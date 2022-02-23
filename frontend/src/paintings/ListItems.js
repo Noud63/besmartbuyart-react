@@ -36,6 +36,8 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, artNr, technique })
         localStorage.setItem('LIKES', JSON.stringify(liked))
     }
 
+
+    //lightbox options and styling
     const options = {
         buttons: {
             iconColor: "#ffffff",

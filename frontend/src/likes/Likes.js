@@ -20,7 +20,7 @@ const Likes = ({ showLikes, setShowLikes }) => {
             return el
         })
 
-        //remove s_idebar overlay
+        //remove sidebar overlay
         if (liked.length === 0) {
             setShowLikes(false)
         }
