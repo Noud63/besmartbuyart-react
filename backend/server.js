@@ -4,6 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const router = express.Router()
+const path = require("path");
 const colors = require('colors')
 const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
@@ -15,6 +16,13 @@ dotenv.config()
 
 connectDB()
 addDataToCollection()
+
+app.use(express.static(path.resolve(__dirname, "./frontend/build")))
+
+app.get('/*', (req, res) => {
+   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 // app.get('/', (req, res) => {
 //       req.body.name = 'Noud'
