@@ -36,6 +36,6 @@ app.use('/', require('./routes/artworkRoute'))
 app.use('/', require('./routes/registerRoute'))
 app.use('/', require('./routes/loginRoute'))
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
    console.log(`Server running on port ${PORT}`.yellow)
 })
