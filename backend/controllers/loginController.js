@@ -4,15 +4,21 @@ const bcrypt = require('bcrypt')
 
 const loginUser = async (req, res) => {
     const { username, password } = req.body
+    let isMatch;
     try {
 
         const userExist = await User.findOne({ username: username})
-        const isMatch = await bcrypt.compare(password, userExist.password)
-
+        if(userExist){
+             isMatch = await bcrypt.compare(password, userExist.password)
+        }
+        
         if (!isMatch) {
             res.status(400)
             res.send('Invalid username or password!')
-        } else if (isMatch) {
+            console.log("Failed to login! Invalid username or password!");
+        }
+
+        if (isMatch) {
 
             let logins = new Logins({username, password})
 

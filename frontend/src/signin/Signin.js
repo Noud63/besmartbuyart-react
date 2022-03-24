@@ -16,14 +16,16 @@ const Signin = () => {
             if (error) {
                 setError(false)
             }
-        }, 3000);
+        }, 5000);
         return () => clearTimeout(timer);
     }, [success, error]);
 
 
     const loginData = async (data) => {
+   
         try {
             const response = await axios.post('http://localhost:5000/logins', data)
+            console.log(response)
             console.log(response.status, response.statusText)
             setSuccess(true)
         } catch (error) {
