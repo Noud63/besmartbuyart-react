@@ -6,6 +6,24 @@ const Likes = ({ showLikes, setShowLikes }) => {
 
     let { liked, setLiked, paintings, setPaintings } = useGlobalContext()
 
+    const [scrolled, setScrolled] = React.useState(false);
+
+    const handleScroll = () => {
+        const offset = window.scrollY;
+        if (offset > 50) {
+            setScrolled(true);
+        }
+        else {
+            setScrolled(false);
+        }
+    }
+
+    React.useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+    }, []);
+
+
+
     //Remove item from likes list
     const removeItemFromLikeslist = (_id) => {
         liked = liked.filter(item => {
@@ -31,10 +49,13 @@ const Likes = ({ showLikes, setShowLikes }) => {
         localStorage.setItem('LIKES', JSON.stringify(liked))
     }
 
+    const class1 = showLikes && scrolled ? "likesContainer top" : "likesContainer show"
+    const class2 = showLikes && !scrolled  ? "likesContainer show" : "likesContainer"
 
-return (
+    return (
 
-    <div className={showLikes ? "likesContainer show" : "likesContainer"}>
+        <div className={showLikes ? class1 : class2}>
+    
             <div className="likesHeader">You like these paintings</div>
             {liked.map(item => {
                 const { _id, name, imgSrc } = item;
