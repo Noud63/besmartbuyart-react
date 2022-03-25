@@ -33,11 +33,11 @@ app.use('/', require('./routes/registerRoute'))
 app.use('/', require('./routes/loginRoute'))
 
 
-app.use(express.static(path.join(__dirname, '../frontend', 'build')))
+app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
 
 app.get('/*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
-   });
+   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+});
 
 
 
