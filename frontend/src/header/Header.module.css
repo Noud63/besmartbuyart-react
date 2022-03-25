@@ -21,17 +21,7 @@
 }
 
 .header.hide {
-   top: -81px;
-}
-
-@media only screen and (max-width: 1170px) {
-  .header {
-    flex-direction: column;
-    padding: 20px 0 10px 0;
-  }
-  .hide {
    top: -118px;
-}
 }
 
 .homeLink {
@@ -61,6 +51,10 @@
 }
 
 @media only screen and (max-width: 1170px) {
+  .header {
+    flex-direction: column;
+    padding: 20px 0 10px 0;
+  }
   .beSmart {
     flex-direction: column;
   }
@@ -71,6 +65,7 @@
  .menu {
      width: 100%;
   }
+  
 }
 
 @media only screen and (max-width: 600px) {
