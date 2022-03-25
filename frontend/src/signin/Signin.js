@@ -24,7 +24,7 @@ const Signin = () => {
     const loginData = async (data) => {
    
         try {
-            const response = await axios.post('http://localhost:5000/logins', data)
+            const response = await axios.post('logins', data)
             console.log(response)
             console.log(response.status, response.statusText)
             setSuccess(true)
