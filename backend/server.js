@@ -17,11 +17,7 @@ dotenv.config()
 connectDB()
 addDataToCollection()
 
-app.use(express.static(path.join(__dirname, '../frontend', 'build')))
 
-app.get('/*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
-});
 
 
 // app.get('/', (req, res) => {
@@ -35,6 +31,15 @@ app.get('/*', (req, res) => {
 app.use('/', require('./routes/artworkRoute'))
 app.use('/', require('./routes/registerRoute'))
 app.use('/', require('./routes/loginRoute'))
+
+
+app.use(express.static(path.join(__dirname, '../frontend', 'build')))
+
+app.get('/*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+   });
+
+
 
 app.listen(PORT, '0.0.0.0', () => {
    console.log(`Server running on port ${PORT}`.yellow)
