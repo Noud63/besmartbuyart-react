@@ -40,6 +40,7 @@ const Header = () => {
     //    if ((liked.length === 0 && showLikes === true)) {
     //         setShowLikes(false)
     //     }
+    
         if (liked.length === 0) return
         //toggle showLikes
         setShowLikes(!showLikes)
