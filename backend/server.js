@@ -17,9 +17,6 @@ dotenv.config()
 connectDB()
 addDataToCollection()
 
-
-
-
 // app.get('/', (req, res) => {
 //       req.body.name = 'Noud'
 //       req.body.age = 58
@@ -33,6 +30,7 @@ app.use('/', require('./routes/registerRoute'))
 app.use('/', require('./routes/loginRoute'))
 
 
+//Place after routes
 app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
 
 app.get('/*', (req, res) => {

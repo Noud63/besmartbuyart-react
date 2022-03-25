@@ -24,7 +24,7 @@ const Signup = () => {
 
     const getUserData = async (data) => {
         try {
-            const response = await axios.post('http://localhost:5000/users', data)
+            const response = await axios.post('users', data)
             console.log(response.status, response.statusText)
             setOverlay(true)
         } catch (error) {
