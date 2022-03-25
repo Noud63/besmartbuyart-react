@@ -21,7 +21,7 @@ const Context = ({ children }) => {
 
         const fetchData = async () => {
             try {
-                await axios.get('artworks').then(res => {
+                await axios.get('http://localhost:5000/artworks').then(res => {
                     const data = res.data
                     setPaintings(data)
                 })
