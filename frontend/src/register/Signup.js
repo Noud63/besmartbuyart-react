@@ -39,9 +39,7 @@ const Signup = () => {
             <div className={signupstyle.container2}>
                 <div className={signupstyle.wrapper2}>
                     <div className={signupstyle.register}>Register</div>
-
-                    <Signupform setOverlay={setOverlay} setFirstname={setFirstname} getUserData={getUserData} />
-
+                        <Signupform setOverlay={setOverlay} setFirstname={setFirstname} getUserData={getUserData} />
                 </div>
             </div>
 
