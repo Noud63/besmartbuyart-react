@@ -17,18 +17,17 @@ dotenv.config()
 connectDB()
 addDataToCollection()
 
-app.get('/', (req, res) => {
-      req.body.name = 'Noud'
-      req.body.age = 58
-      const { name, age } = req.body
-      console.log(req.body)
-      res.send(`This persons name is ${name}, and he is ${age} years old.`)
-})
+// app.get('/', (req, res) => {
+//       req.body.name = 'Noud'
+//       req.body.age = 58
+//       const { name, age } = req.body
+//       console.log(req.body)
+//       res.send(`This persons name is ${name}, and he is ${age} years old.`)
+// })
 
 app.use('/', require('./routes/artworkRoute'))
 app.use('/', require('./routes/registerRoute'))
 app.use('/', require('./routes/loginRoute'))
-
 
 //Place after routes
 app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
@@ -36,7 +35,6 @@ app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
 app.get('/*', (req, res) => {
    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
 });
-
 
 app.listen(PORT, '0.0.0.0', () => {
    console.log(`Server running on port ${PORT}`.yellow)
