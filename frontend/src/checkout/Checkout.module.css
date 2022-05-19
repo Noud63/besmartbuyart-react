@@ -430,6 +430,13 @@ input[name="number2"]
     width: 100%;
 }
 
+.checkboxes {
+    display: flex;
+    /* align-items: flex-start;
+    justify-content: center; */
+    flex-direction: row;
+}
+
 .choosePayMethod {
     display: flex;
     align-items: flex-start;
@@ -441,11 +448,9 @@ input[name="number2"]
 }
 
 .radioField {
-    width: 100%;
+    width: 30%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .radioBtnIdealIcon {
@@ -455,14 +460,12 @@ input[name="number2"]
 }
 
 .radioBtn {
-    width: 30%;
     margin-right: 20px;
 }
 
 select {
-     width: 200px;
-     height: 40px;
-     padding: 10px;
+   height: 40px;
+   padding: 10px;
    background-color: rgb(68, 68, 68);
    color: rgb(177, 177, 177);
    font-size: 1rem;
@@ -471,10 +474,10 @@ select {
 }
 
 .selectBank{
-    width: 10%;
+    width: 70%;
     display: flex;
     justify-content: flex-end;
-    flex-direction: row;
+    align-items: flex-start;
 }
 
 .confirmAndPay {

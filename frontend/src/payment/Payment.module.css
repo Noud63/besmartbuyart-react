@@ -1,0 +1,10 @@
+.container {
+    height: 1000px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(189, 189, 189);
+    font-family: 'Times';
+    font-size: 1.6rem;
+}

@@ -17,13 +17,9 @@ dotenv.config()
 connectDB()
 addDataToCollection()
 
-// app.get('/', (req, res) => {
-//       req.body.name = 'Noud'
-//       req.body.age = 58
-//       const { name, age } = req.body
-//       console.log(req.body)
-//       res.send(`This persons name is ${name}, and he is ${age} years old.`)
-// })
+app.get('/', (req, res) => {
+   console.log('Api up and running!')
+})
 
 app.use('/', require('./routes/artworkRoute'))
 app.use('/', require('./routes/registerRoute'))

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import checkoutstyles from './Checkout.module.css';
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useGlobalContext } from '../Context';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
@@ -10,14 +11,28 @@ const Checkout = () => {
 
     let { total, price, vat, units } = useGlobalContext();
 
+    const history = useHistory()
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
+    const [paymentMethod, setPaymentMethod] = useState('')
+
     const onSubmit = data => {
-        console.log(data)
-        reset()
+        if (paymentMethod === '') {
+            alert('Chose paymentMethod')
+        } else {
+            data = { ...data, paymentMethod: paymentMethod }
+            console.log(data)
+            reset()
+        }
     };
 
     const onErrors = errors => console.error(errors);
+
+    const onsubmitHandler = (e) => {
+        e.preventDefault()
+        history.push('/payment');
+    }
 
     return (
 
@@ -65,38 +80,52 @@ const Checkout = () => {
                                         <div className={checkoutstyles.label}><label htmlFor="name">Name: </label>
                                             <ErrorMessage errors={errors} name="name2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
                                         </div>
-                                        <div className={checkoutstyles.labelInput}><input type="text" name="name2" {...register("name2", { required: 'name required!' })} /></div>
+                                        <div className={checkoutstyles.labelInput}>
+                                            <input type="text" name="name2" {...register("name2", { required: 'name required!' })} />
+                                        </div>
                                     </div>
 
                                     <div className={checkoutstyles.labelField}>
                                         <div className={checkoutstyles.label}><label htmlFor="address">Address: </label></div>
                                         <div className={checkoutstyles.addressbar}>
-                                            <div className={checkoutstyles.addresslabelInput}><input type="text" name="address2" {...register("address2", { required: 'address and number required!' })} /></div>
+                                            <div className={checkoutstyles.addresslabelInput}>
+                                                <input type="text" name="address2" {...register("address2", { required: 'address and number required!' })} />
+                                            </div>
                                         </div>
                                         <div className={checkoutstyles.label2}><label htmlFor="number">Num: </label></div>
                                         <div className={checkoutstyles.numberbar}>
-                                            <div className={checkoutstyles.numberlabelInput}><input type="text" name="number2" {...register("number2", { required: 'number required!' })} /></div>
+                                            <div className={checkoutstyles.numberlabelInput}>
+                                                <input type="text" name="number2" {...register("number2", { required: 'number required!' })} />
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div className={checkoutstyles.labelField}>
                                         <div className={checkoutstyles.label}><label htmlFor="city">city: </label></div>
-                                        <div className={checkoutstyles.labelInput}><input type="text" name="city2" {...register("city2", { required: 'city required!' })} /></div>
+                                        <div className={checkoutstyles.labelInput}>
+                                            <input type="text" name="city2" {...register("city2", { required: 'city required!' })} />
+                                        </div>
                                     </div>
 
                                     <div className={checkoutstyles.labelField}>
                                         <div className={checkoutstyles.label}><label htmlFor="country">Country: </label></div>
-                                        <div className={checkoutstyles.labelInput}><input type="text" name="country2" {...register("country2", { required: 'country required!' })} /></div>
+                                        <div className={checkoutstyles.labelInput}>
+                                            <input type="text" name="country2" {...register("country2", { required: 'country required!' })} />
+                                        </div>
                                     </div>
 
                                     <div className={checkoutstyles.labelField}>
                                         <div className={checkoutstyles.label}><label htmlFor="email">E-mail: </label></div>
-                                        <div className={checkoutstyles.labelInput}><input type="email" name="email2" {...register("email2", { required: 'email required!' })} /></div>
+                                        <div className={checkoutstyles.labelInput}>
+                                            <input type="email" name="email2" {...register("email2", { required: 'email required!' })} />
+                                        </div>
                                     </div>
 
                                     <div className={checkoutstyles.labelField}>
                                         <div className={checkoutstyles.label}><label htmlFor="telephone">Tel: </label></div>
-                                        <div className={checkoutstyles.labelInput}><input type="text" name="telephone2" {...register("telephone2", { required: 'telephone required!' })} /></div>
+                                        <div className={checkoutstyles.labelInput}>
+                                            <input type="text" name="telephone2" {...register("telephone2", { required: 'telephone required!' })} />
+                                        </div>
                                     </div>
 
                                     <div className={checkoutstyles.confirm}><button type="submit" className={checkoutstyles.btn}>Confirm</button></div>
@@ -108,18 +137,54 @@ const Checkout = () => {
 
                         <div className={checkoutstyles.pay}>
                             <div className={checkoutstyles.details}>
-                                <div className={checkoutstyles.paymentDetails}>Payment Details</div>
+                                <div className={checkoutstyles.paymentDetails}>Payment Method</div>
                                 <div className={checkoutstyles.paymentContainer}>
-                                    <form action="" className={checkoutstyles.payContainer}>
+                                    <form className={checkoutstyles.payContainer}>
 
-                                        <div className={checkoutstyles.radioField}>
-                                            <div className={checkoutstyles.radioBtnIdealIcon}>
-                                                <div className={checkoutstyles.radioBtn}><input type="radio" name="ideal" style={{ width: '15px' }} /></div>
-                                                <div><img src={process.env.PUBLIC_URL + '/icons/ideal.png'} alt="cart" style={{ width: '40px' }} /></div>
+                                        <div className={checkoutstyles.checkboxes}>
+
+                                            <div className={checkoutstyles.radioField}>
+
+                                                <div className={checkoutstyles.radioBtnIdealIcon}>
+                                                    <div className={checkoutstyles.radioBtn}>
+                                                        <input type="radio" name="paymentMethod" value={'iDeal'} style={{ width: '15px' }} onChange={(e) => setPaymentMethod(e.target.value)} />
+                                                    </div>
+                                                    <div><img src={process.env.PUBLIC_URL + '/icons/ideal.png'} alt="cart" style={{ width: '40px' }} /></div>
+                                                </div>
+
+                                                <div className={checkoutstyles.radioBtnIdealIcon}>
+                                                    <div className={checkoutstyles.radioBtn}>
+                                                        <input type="radio" name="paymentMethod" value={'Paypal' || ""} style={{ width: '15px' }} onChange={(e) => setPaymentMethod(e.target.value)} />
+                                                    </div>
+                                                    <div><img src={process.env.PUBLIC_URL + '/icons/paypal.png'} alt="cart" style={{ width: '40px' }} /></div>
+                                                </div>
+
+                                                <div className={checkoutstyles.radioBtnIdealIcon}>
+                                                    <div className={checkoutstyles.radioBtn}>
+                                                        <input type="radio" name="paymentMethod" value={'Mastercard' || ""} style={{ width: '15px' }} onChange={(e) => setPaymentMethod(e.target.value)} />
+                                                    </div>
+                                                    <div><img src={process.env.PUBLIC_URL + '/icons/mastercard.png'} alt="cart" style={{ width: '43px' }} /></div>
+                                                </div>
+
+                                                <div className={checkoutstyles.radioBtnIdealIcon}>
+                                                    <div className={checkoutstyles.radioBtn}>
+                                                        <input type="radio" name="paymentMethod" value={'Visa' || ""} style={{ width: '15px' }} onChange={(e) => setPaymentMethod(e.target.value)} />
+                                                    </div>
+                                                    <div><img src={process.env.PUBLIC_URL + '/icons/visa.png'} alt="cart" style={{ width: '43px' }} /></div>
+                                                </div>
+
+                                                <div className={checkoutstyles.radioBtnIdealIcon}>
+                                                    <div className={checkoutstyles.radioBtn}>
+                                                        <input type="radio" name="paymentMethod" value={'Maestro' || ""} style={{ width: '15px' }} onChange={(e) => setPaymentMethod(e.target.value)} />
+                                                    </div>
+                                                    <div><img src={process.env.PUBLIC_URL + '/icons/maestro.png'} alt="cart" style={{ width: '43px' }} /></div>
+                                                </div>
+
                                             </div>
 
                                             <div className={checkoutstyles.selectBank}>
-                                                <select data-testid="bank-select"><option value="default" disabled="">Choose your bank</option>
+                                                <select data-testid="bank-select">
+                                                    <option value="default" disabled="" >Choose your bank</option>
                                                     <option value="ABNANL2A">ABN AMRO</option>
                                                     <option value="ASNBNL21">ASN Bank</option>
                                                     <option value="BUNQNL2A">Bunq bank</option>
@@ -134,37 +199,12 @@ const Checkout = () => {
                                                     <option value="REVOLT21">Revolut</option>
                                                 </select>
                                             </div>
-
                                         </div>
 
-                                        <div className={checkoutstyles.radioField}>
-                                            <div className={checkoutstyles.radioBtnIdealIcon}>
-                                                <div className={checkoutstyles.radioBtn}><input type="radio" name="ideal" style={{ width: '15px' }} /></div>
-                                                <div><img src={process.env.PUBLIC_URL + '/icons/paypal.png'} alt="cart" style={{ width: '40px' }} /></div>
-                                            </div>
+                                        <div className={checkoutstyles.confirmAndPay}>
+                                            <button type="submit" onClick={onsubmitHandler} className={checkoutstyles.btn}>Pay</button>
                                         </div>
 
-                                        <div className={checkoutstyles.radioField}>
-                                            <div className={checkoutstyles.radioBtnIdealIcon}>
-                                                <div className={checkoutstyles.radioBtn}><input type="radio" name="ideal" style={{ width: '15px' }} /></div>
-                                                <div><img src={process.env.PUBLIC_URL + '/icons/mastercard.png'} alt="cart" style={{ width: '43px' }} /></div>
-                                            </div>
-                                        </div>
-
-                                        <div className={checkoutstyles.radioField}>
-                                            <div className={checkoutstyles.radioBtnIdealIcon}>
-                                                <div className={checkoutstyles.radioBtn}><input type="radio" name="ideal" style={{ width: '15px' }} /></div>
-                                                <div><img src={process.env.PUBLIC_URL + '/icons/visa.png'} alt="cart" style={{ width: '43px' }} /></div>
-                                            </div>
-                                        </div>
-
-                                        <div className={checkoutstyles.radioField}>
-                                            <div className={checkoutstyles.radioBtnIdealIcon}>
-                                                <div className={checkoutstyles.radioBtn}><input type="radio" name="ideal" style={{ width: '15px' }} /></div>
-                                                <div><img src={process.env.PUBLIC_URL + '/icons/maestro.png'} alt="cart" style={{ width: '43px' }} /></div>
-                                            </div>
-                                        </div>
-                                        <div className={checkoutstyles.confirmAndPay}><button type="submit" className={checkoutstyles.btn}>Pay</button></div>
                                     </form>
                                 </div>
                             </div>
