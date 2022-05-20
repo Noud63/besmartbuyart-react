@@ -31,11 +31,6 @@ const Checkout = () => {
 
     const onErrors = errors => console.error(errors);
 
-    // const onsubmitHandler = (e) => {
-    //     e.preventDefault()
-    //     history.push('/payment');
-    // }
-
     return (
 
         <div className={checkoutstyles.wrapper}>
@@ -89,25 +84,26 @@ const Checkout = () => {
                                     <div className={checkoutstyles.register}>
 
                                         <div className={checkoutstyles.labelField}>
-
                                             <div className={checkoutstyles.label}><label htmlFor="name">Name: </label>
                                                 <ErrorMessage errors={errors} name="name2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
                                             </div>
-
                                             <div className={checkoutstyles.labelInput}>
                                                 <input type="text" name="name2" {...register("name2", { required: 'name required!' })} />
                                             </div>
-
                                         </div>
 
                                         <div className={checkoutstyles.labelField}>
-                                            <div className={checkoutstyles.label}><label htmlFor="address">Address: </label></div>
+                                            <div className={checkoutstyles.label}><label htmlFor="address">Address: </label>
+                                                <ErrorMessage errors={errors} name="address2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                                </div>
                                             <div className={checkoutstyles.addressbar}>
                                                 <div className={checkoutstyles.addresslabelInput}>
                                                     <input type="text" name="address2" {...register("address2", { required: 'address required!' })} />
                                                 </div>
                                             </div>
-                                            <div className={checkoutstyles.label2}><label htmlFor="number">Num: </label></div>
+                                            <div className={checkoutstyles.label2}><label htmlFor="number">Num: </label>
+                                                <ErrorMessage errors={errors} name="number2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                                </div>
                                             <div className={checkoutstyles.numberbar}>
                                                 <div className={checkoutstyles.numberlabelInput}>
                                                     <input type="text" name="number2" {...register("number2", { required: 'number required!' })} />
@@ -116,36 +112,46 @@ const Checkout = () => {
                                         </div>
 
                                         <div className={checkoutstyles.labelField}>
-                                            <div className={checkoutstyles.label}><label htmlFor="city">city: </label></div>
+                                            <div className={checkoutstyles.label}><label htmlFor="city">city: </label>
+                                                <ErrorMessage errors={errors} name="city2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                                </div>
                                             <div className={checkoutstyles.labelInput}>
                                                 <input type="text" name="city2" {...register("city2", { required: 'city required!' })} />
                                             </div>
                                         </div>
 
                                         <div className={checkoutstyles.labelField}>
-                                            <div className={checkoutstyles.label}><label htmlFor="zip">ZIP Code: </label></div>
+                                            <div className={checkoutstyles.label}><label htmlFor="zip">ZIP Code: </label>
+                                                <ErrorMessage errors={errors} name="zip" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                                </div>
                                             <div className={checkoutstyles.labelInput}>
-                                                <input type="text" name="zip" {...register("zip", { required: 'ZIP Code required!' })} />
+                                                <input type="text" name="zip" {...register("zip", { required: 'zip required!' })} />
                                             </div>
                                         </div>
 
 
                                         <div className={checkoutstyles.labelField}>
-                                            <div className={checkoutstyles.label}><label htmlFor="country">Country: </label></div>
+                                            <div className={checkoutstyles.label}><label htmlFor="country">Country: </label>
+                                                <ErrorMessage errors={errors} name="country2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                                </div>
                                             <div className={checkoutstyles.labelInput}>
                                                 <input type="text" name="country2" {...register("country2", { required: 'country required!' })} />
                                             </div>
                                         </div>
 
                                         <div className={checkoutstyles.labelField}>
-                                            <div className={checkoutstyles.label}><label htmlFor="email">E-mail: </label></div>
+                                            <div className={checkoutstyles.label}><label htmlFor="email">E-mail: </label>
+                                                <ErrorMessage errors={errors} name="email2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                                </div>
                                             <div className={checkoutstyles.labelInput}>
                                                 <input type="email" name="email2" {...register("email2", { required: 'email required!' })} />
                                             </div>
                                         </div>
 
                                         <div className={checkoutstyles.labelField}>
-                                            <div className={checkoutstyles.label}><label htmlFor="telephone">Tel: </label></div>
+                                            <div className={checkoutstyles.label}><label htmlFor="telephone">Tel: </label>
+                                                <ErrorMessage errors={errors} name="telephone2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
+                                            </div>
                                             <div className={checkoutstyles.labelInput}>
                                                 <input type="text" name="telephone2" {...register("telephone2", { required: 'telephone required!' })} />
                                             </div>
