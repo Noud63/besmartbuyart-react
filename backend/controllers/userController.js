@@ -3,7 +3,7 @@ const User = require('../models/userModel')
 const registerUser = async (req, res) => {
 
     const { firstname, lastname, email, password, repeatpassword,
-        username, address, number, telephone, city, country } = req.body
+        username, address, number, telephone, city, zip, country } = req.body
     try {
 
         const userExist = await User.findOne({ email: email })
@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
 
         let user = new User({
             firstname, lastname, email, password, repeatpassword,
-            username, address, number, telephone, city, country
+            username, address, number, telephone, city, zip, country
         })
 
         user = await user.save((err, doc) => {              // doc = saved user object

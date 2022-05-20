@@ -125,196 +125,62 @@
     margin-bottom: 50px;
 }
 
-/* form */
-.payment {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    padding: 20px 0 30px 0;
-}
-
-.register {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.2rem;
-    color: rgb(180, 180, 180);
-}
-
-.shippingAddress {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content:  flex-start;
-    background-color: rgb(31, 31, 31);
-    padding: 0 20px;
-    height: 35px;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-top: 140px;
-    min-height: 100vh;
-}
-
-.cartContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 80%;
-}
-
-@media only screen and (max-width: 1000px) {
-  .cartContainer  {
-     width: 100%;
-  }
-}
-
-.itemsInCart {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding: 20px;
-    background-color: rgb(32, 32, 32);
-    color: rgb(199, 199, 199);
-}
-
-.inCart {
-    font-size: 1.2em;
-}
-
-.inCartCircle {
-    display: inline-block;
-    width: 1.4em;
-    text-align: center;
-    font-size: 1.4em;
-    line-height: 1.4em;
-    border-radius: 50%;
-    background-color: rgb(177, 177, 177);
-    margin-right: 10px;
-    color: rgb(43, 43, 43);
-}
-
-.cartFooter {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.totals {
-    width: 100%;
-    height: 150px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    background-color: rgb(221, 125, 0);
-    color: rgb(54, 54, 54);
-    font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (1980 - 320)));
-    padding: 20px;
-}
-
-.totalPrice {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0 10px 0;
-}
-
-.totalVat {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0 10px 0;
-}
-
-.price, .vat {
-    width: 40%;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.totalPriceIncVat {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0 10px 0;
-    border-top: 1px solid rgb(53, 53, 53);
-    padding-top: 10px;
-}
-
-.euro, .totalInclVat {
-    width: 140px;
-    display: flex;
-    justify-content: center; 
-}
-
-.currency {
-   width: 42%;
-   display: flex;
-   justify-content: flex-end; 
-}
-
-.euroPrice {
-    width: 58%;
-    display: flex;
-    justify-content:  flex-end; 
-}
-
-.leavecheckout {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(24, 24, 24);
-    padding: 30px;
-    font-size: calc(22px + (28 - 22) * ((100vw - 320px) / (1980 - 320)));
-    color: rgb(185, 185, 185);
-    margin-bottom: 50px;
-}
-
 
 /********* form *********/
+
+.titles {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
 .payment {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;
-    padding: 20px 0 30px 0;
-}
-
-.register {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.2rem;
-    color: rgb(180, 180, 180);
+    padding: 5px 0 30px 0;
 }
 
 .shippingAddress {
-    width: 100%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content:  flex-start;
     background-color: rgb(31, 31, 31);
     padding: 0 20px;
     height: 35px;
+    font-size: 1.2rem;
+    color: rgb(185, 185, 185);
 }
 
 .formContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     height: auto;
     margin-top: 20px;
     padding: 0 20px;
     border-right: 1px solid gray;
     border-left: 1px solid gray;
+}
+
+.registerAndPayBox {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.register {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    color: rgb(180, 180, 180);
+    border-right: 1px solid gray;
+    padding-right: 20px;
 }
 
 .form {
@@ -362,7 +228,8 @@ input[name="country2"],
 input[name="city2"],
 input[name="telephone2"],
 input[name="address2"],
-input[name="number2"]
+input[name="number2"],
+input[name="zip"]
  {
     width: 100%;
     height: 30px;
@@ -396,16 +263,8 @@ input[name="number2"]
 
 /******* payment details *******/
 
-.pay {
-    width: 50%;
-}
-
-.details {
-    width: 100%;
-}
-
 .paymentDetails {
-    width: 100%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content:  flex-start;
@@ -416,24 +275,21 @@ input[name="number2"]
     color: rgb(185, 185, 185);
 }
 
-.paymentContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 360px;
-    margin-top: 20px;
+.paymentDetails2 {
+    width: 50%;
+    display: none;
+    align-items: center;
+    justify-content:  flex-start;
+    background-color: rgb(31, 31, 31);
     padding: 0 20px;
-    border-right: 1px solid gray;
-}
-
-.payContainer {
-    width: 100%;
+    height: 35px;
+    font-size: 1.2rem;
+    color: rgb(185, 185, 185);
 }
 
 .checkboxes {
     display: flex;
-    /* align-items: flex-start;
-    justify-content: center; */
+    padding: 5px 0 0 20px;
     flex-direction: row;
 }
 
@@ -490,10 +346,28 @@ select {
         flex-direction: column;
     }
     
-    .register, .paymentDetails {
+    .register, .paymentDetails2, .shippingAddress {
         width: 100%;
+        border-right: 0;
     }
-    
+
+    .registerAndPayBox {
+        flex-direction: column;
+    }
+
+    .paymentDetails2 {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .paymentDetails {
+        display: none;
+    }
+
+    .checkboxes {
+         padding: 20px 0 0 5px;
+    }
+
     .labelField {
         width: 100%;
     }

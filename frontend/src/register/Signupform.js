@@ -32,7 +32,7 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
             setError2(true)
             return
         }
-
+        console.log(data)
         getUserData(data)
 
         const firstname = data.firstname
@@ -81,6 +81,15 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
                 </div>
                 <div className={signupStyle.error} style={{ color: 'red', marginBottom: '10px' }}>
                     {errors.city && <div>{errors.city.message}</div>}
+                </div>
+            </div>
+
+            <div className={signupStyle.name}>
+                <div className={signupStyle.textInput}><label htmlFor="zip" className={signupStyle.pass}>Zip code: </label>
+                    <input type="text" placeholder="" name="zip" {...register("zip", { required: 'zip code required!' })} />
+                </div>
+                <div className={signupStyle.error} style={{ color: 'red', marginBottom: '10px' }}>
+                    {errors.zip && <div>{errors.zip.message}</div>}
                 </div>
             </div>
 
