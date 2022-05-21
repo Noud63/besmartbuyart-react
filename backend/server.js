@@ -17,9 +17,9 @@ dotenv.config()
 connectDB()
 addDataToCollection()
 
-app.get('/', (req, res) => {
-   console.log('Api up and running!')
-})
+// app.get('/', (req, res) => {
+//    console.log('Api up and running!')
+// })
 
 app.use('/', require('./routes/artworkRoute'))
 app.use('/', require('./routes/registerRoute'))
