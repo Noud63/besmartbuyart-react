@@ -15,7 +15,6 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
             if (error) {
                 setError(false)
             }
-
             if(error2){
                 setError2(false)
             }
@@ -32,7 +31,6 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
             setError2(true)
             return
         }
-        console.log(data)
         getUserData(data)
 
         const firstname = data.firstname
