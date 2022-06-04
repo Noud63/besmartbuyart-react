@@ -21,7 +21,16 @@ const Checkout = () => {
         if (paymentMethod === '') {
             alert('Chose paymentMethod')
         } else {
-            data = { ...data, paymentMethod: paymentMethod }
+            data = { ...data, 
+                      paymentMethod: paymentMethod, 
+                      shippingAddress: {
+                            name: data.name2,
+                            address: data.address2,
+                            number: data.number2,
+                            city: data.city2,
+                            zip: data.zip,
+                            country: data.country2
+            }}
             console.log(data)
             reset()
             history.push('/payment');

@@ -75,7 +75,7 @@ const Context = ({ children }) => {
 
 
     return (
-        <allData.Provider value={{ liked, setLiked, cart, setCart, paintings, setPaintings, total, vat, price, units }}>{children}</allData.Provider>
+        <allData.Provider value={{ liked, setLiked, cart, setCart, paintings, setPaintings, total, vat, price, units}}>{children}</allData.Provider>
     )
 }
 

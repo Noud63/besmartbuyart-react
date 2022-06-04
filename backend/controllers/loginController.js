@@ -1,17 +1,18 @@
 const Logins = require('../models/loginModel')
 const User = require('../models/userModel')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 const loginUser = async (req, res) => {
     const { username, password } = req.body
     let isMatch;
     try {
 
-        const userExist = await User.findOne({ username: username})
-        if(userExist){
-             isMatch = await bcrypt.compare(password, userExist.password)
-        }
+        const userExist = await User.findOne({ username: username })
         
+        if (userExist) {
+            isMatch = await bcrypt.compare(password, userExist.password)
+        }
+
         if (!isMatch) {
             res.status(400)
             res.send('Invalid username or password!')
@@ -20,13 +21,13 @@ const loginUser = async (req, res) => {
 
         if (isMatch) {
 
-            let logins = new Logins({username, password})
+            let logins = new Logins({ username, password })
 
             logins = await logins.save((err, doc) => {
                 if (err) return console.error(err);
                 console.log("Login successful!");
             })
-            res.send(logins)
+            res.status(200).json({ logins, message: 'Successfully Loggged In!' })
         }
     } catch (error) {
         console.log(error)

@@ -22,6 +22,7 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
         return () => clearTimeout(timer);
     }, [error, error2])
 
+    
     const onSubmit = data => {
         if (data.password !== data.repeatpassword) {
             setError(true)

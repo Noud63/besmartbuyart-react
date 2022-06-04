@@ -22,20 +22,22 @@ const Signin = () => {
 
 
     const loginData = async (data) => {
-   
+
         try {
             const response = await axios.post('logins', data)
-            console.log(response)
-            console.log(response.status, response.statusText)
-            setSuccess(true)
+            console.log(response.status, response.data.message, JSON.parse(response.config.data))
+            if(response.status === 200){
+                setSuccess(true)
+            }
+
         } catch (error) {
-            console.log(error.message)
+        //    const message = error.response.data.message
             setSuccess(false)
             setError(true)
         }
     }
 
-return (
+    return (
         <div className={signinStyle.container}>
             <div className={signinStyle.wrapper}>
                 <div className={signinStyle.login}>Signin</div>
@@ -50,7 +52,6 @@ return (
                         <div className={signinStyle.welcome}><span>Invalid password</span><span>or username!</span></div>
                     </div>
                 </div> : ""}
-
             </div>
         </div>
     )

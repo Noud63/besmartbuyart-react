@@ -21,9 +21,9 @@ addDataToCollection()
 //    console.log('Api up and running!')
 // })
 
-app.use('/', require('./routes/artworkRoute'))
-app.use('/', require('./routes/registerRoute'))
-app.use('/', require('./routes/loginRoute'))
+app.use('/artworks', require('./routes/artworkRoute'))
+app.use('/users', require('./routes/registerRoute'))
+app.use('/logins', require('./routes/loginRoute'))
 
 //Place after routes
 app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
