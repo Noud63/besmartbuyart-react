@@ -9,7 +9,7 @@ import { ErrorMessage } from '@hookform/error-message';
 
 const Checkout = () => {
 
-    let { total, price, vat, units } = useGlobalContext();
+    let { total, price, vat, units, userName } = useGlobalContext();
 
     const history = useHistory()
 
@@ -20,6 +20,12 @@ const Checkout = () => {
     const onSubmit = data => {
         if (paymentMethod === '') {
             alert('Chose paymentMethod')
+            return
+        }
+        if(userName === ""){
+                alert('Login first to complete checkout!')
+                history.push('/signin');
+
         } else {
             data = { ...data, 
                       paymentMethod: paymentMethod, 
@@ -148,7 +154,7 @@ const Checkout = () => {
                                             </div>
                                         </div>
 
-                                        <div className={checkoutstyles.labelField}>
+                                        {/* <div className={checkoutstyles.labelField}>
                                             <div className={checkoutstyles.label}><label htmlFor="email">E-mail: </label>
                                                 <ErrorMessage errors={errors} name="email2" render={({ message }) => <div className={checkoutstyles.errormessage}>{message}</div>} />
                                                 </div>
@@ -164,7 +170,7 @@ const Checkout = () => {
                                             <div className={checkoutstyles.labelInput}>
                                                 <input type="text" name="telephone2" {...register("telephone2", { required: 'telephone required!' })} />
                                             </div>
-                                        </div>
+                                        </div> */}
 
                                     </div>
 

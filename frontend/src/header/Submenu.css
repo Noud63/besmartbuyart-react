@@ -1,0 +1,42 @@
+.subMenuLogout {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color:  rgb(221, 125, 0);
+  z-index: -1;
+  color: rgb(37, 37, 37);
+  box-shadow: 0px 4px 8px rgb(34, 34, 34);
+  transition: all .5s ease-in-out;
+}
+
+.subMenuLogout.show {
+  top: 82px;
+ }
+
+ @media only screen and (max-width: 1170px) {
+  .subMenuLogout.show {
+    top: 120px
+  }
+  }
+
+  @media only screen and (max-width: 600px) {
+  .subMenuLogout.show {
+    top: 110px
+  }
+  }
+
+  @media only screen and (max-width: 600px) {
+  .subMenuLogout.show {
+    top: 105px
+  }
+  }
+
+  @media only screen and (max-width: 460px) {
+  .subMenuLogout.show {
+    top: 90px
+  }
+  }

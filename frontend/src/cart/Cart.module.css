@@ -87,9 +87,8 @@
    justify-content: center;
    flex-direction: column;
    font-size: calc(18px + (24 - 18) * ((100vw - 320px) / (1980 - 320)));
-   color: rgb(221, 125, 0);
-   text-shadow: 0px 1px 2px rgb(46, 46, 46);
-   background-color: white;
+   color: rgb(34, 34, 34);
+   background-color: rgb(250, 250, 250);
    z-index: 4;
    position: absolute;
 }

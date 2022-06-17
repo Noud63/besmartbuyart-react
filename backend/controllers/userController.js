@@ -25,7 +25,8 @@ const registerUser = async (req, res) => {
         res.send(user)
 
     } catch (error) {
-        console.log(error)
+        res.status(404)
+        throw new Error('Something is wrong here!')
     }
 };
 

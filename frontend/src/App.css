@@ -1,10 +1,7 @@
-* {
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
     background-image:linear-gradient(to bottom, rgb(75, 75, 75),rgb(59, 59, 59), rgb(32, 32, 32));
 }
 

@@ -4,12 +4,10 @@
     height: 100vh;
 }
 
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
+@media only screen and (max-width: 1170px){
+.container {
+    margin: 180px auto;
+  }
 }
 
 .login {

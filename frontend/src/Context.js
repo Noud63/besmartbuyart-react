@@ -8,6 +8,8 @@ const Context = ({ children }) => {
     const [liked, setLiked] = React.useState([]);
     const [cart, setCart] = React.useState([]);
     const [paintings, setPaintings] = React.useState([])
+    const [loggedIn, setLoggedIn] = React.useState(false)
+    const [userName, setUserName] = React.useState("")
 
     let [total, setTotal] = React.useState(0)
     let [vat, setVat] = React.useState(0)
@@ -42,6 +44,7 @@ const Context = ({ children }) => {
         localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings([]);
         localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked([]);
     }, []);
+    
 
     React.useEffect(() => {
         storage()
@@ -66,7 +69,6 @@ const Context = ({ children }) => {
         setPrice(price)
         setVat(vat)
         setTotal(total)
-
     }, [cart])
 
     React.useEffect(() => {
@@ -75,7 +77,11 @@ const Context = ({ children }) => {
 
 
     return (
-        <allData.Provider value={{ liked, setLiked, cart, setCart, paintings, setPaintings, total, vat, price, units}}>{children}</allData.Provider>
+        <allData.Provider value={{
+            liked, setLiked, cart, setCart,
+            paintings, setPaintings, userName, setUserName,
+            loggedIn, setLoggedIn, total, vat, price, units
+        }}>{children}</allData.Provider>
     )
 }
 

@@ -18,6 +18,7 @@ const SigninForm = ({loginData}) => {
     };
 
     const onSubmit = (data) => {
+        
         loginData(data)
         reset()
     };
@@ -42,7 +43,7 @@ const SigninForm = ({loginData}) => {
                 </div>
 
                 <input type={passwordShown ? "text" : "password"} placeholder="" name="password3"
-                    {...register("password", { required: 'password required!', minLength: { value: 8, message: 'Minimum of 8 characters required!' } })}
+                    {...register("password", { required: 'password required!', minLength: { value: 1, message: 'Minimum of 8 characters required!' } })}
                     onChange={(e) => setPassword(e.target.value)} />
 
 

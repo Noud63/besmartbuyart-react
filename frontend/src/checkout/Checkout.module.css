@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 .wrapper {
     display: flex;
     justify-content: center;
@@ -49,6 +51,8 @@
 .cartFooter {
     width: 80%;
     display: flex;
+     align-items: center;
+     /* justify-content: center; */
     flex-direction: column;
     margin-top: 10px;
 }
@@ -139,6 +143,8 @@
     width: 100%;
     height: auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     padding: 5px 0 30px 0;
 }

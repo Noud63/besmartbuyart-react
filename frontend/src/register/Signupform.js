@@ -28,10 +28,10 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
             setError(true)
             return
         }
-        if (data.password.length < 8) {
-            setError2(true)
-            return
-        }
+        // if (data.password.length < 8) {
+        //     setError2(true)
+        //     return
+        // }
         getUserData(data)
 
         const firstname = data.firstname
