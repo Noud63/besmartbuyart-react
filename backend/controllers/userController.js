@@ -1,33 +1,61 @@
 const User = require('../models/userModel')
+const asyncHandler = require('express-async-handler')
+const jwt = require('jsonwebtoken')
 
-const registerUser = async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
 
-    const { firstname, lastname, email, password, repeatpassword,
+    const { firstname, lastname, email, password,
         username, address, number, telephone, city, zip, country } = req.body
-    try {
 
         const userExist = await User.findOne({ email: email })
 
         if (userExist) {
-            return res.status(400).json({ error: 'Email already exist' });
+            return res.status(400).json({ error: 'User already exist' });
         }
 
-        let user = new User({
-            firstname, lastname, email, password, repeatpassword,
-            username, address, number, telephone, city, zip, country
+        let user = await User.create({
+            firstname, 
+            lastname, 
+            email, 
+            password, 
+            username, 
+            address, 
+            number, 
+            telephone, 
+            city, 
+            zip, 
+            country
         })
 
-        user = await user.save((err, doc) => {              // doc = saved user object
-            if (err) return console.error(err);
-            console.log("User added successfully!");
-            console.log(doc)
-        })
-        res.send(user)
+        if (user) {
+            res.status(201).json({
+                _id: user.id,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                email: user.email,
+                password: user.password,
+                username: user.username,
+                address: user.address,
+                number: user.number,
+                telephone: user.telephone,
+                city: user.city,
+                zip: user.zip,
+                country: user.country,
+                token: generateToken(user._id),
+            })
+        } else {
+            res.status(400)
+            throw new Error('Invalid user data')
+        }
 
-    } catch (error) {
-        res.status(404)
-        throw new Error('Something is wrong here!')
-    }
-};
+        console.log(user)
+});
+
+//Generate JWT
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '30d',
+    })
+}
 
 module.exports = registerUser

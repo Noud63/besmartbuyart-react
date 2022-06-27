@@ -1,37 +1,50 @@
 const Logins = require('../models/loginModel')
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt');
+const asyncHandler = require('express-async-handler')
+const jwt = require('jsonwebtoken')
 
-const loginUser = async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
     const { username, password } = req.body
-    let isMatch;
-    try {
 
-        const userExist = await User.findOne({ username: username })
-        
-        if (userExist) {
-            isMatch = await bcrypt.compare(password, userExist.password)
-        }
+    const userExist = await User.findOne({ username: username })
 
-        if (!isMatch) {
-            res.status(400)
-            res.send('Invalid username or password!')
-            console.log("Failed to login! Invalid username or password!");
-        }
-
-        if (isMatch) {
-
-            let logins = new Logins({ username, password })
-
-            logins = await logins.save((err, doc) => {
-                if (err) return console.error(err);
-                console.log("Login successful!");
-            })
-            res.status(200).json({ logins, message: 'Successfully Loggged In!' })
-        }
-    } catch (error) {
-        console.log(error)
+    if (!userExist) {
+        console.log("Failed to login! Invalid username or password!");
+        return res.status(401).json({ message: 'Invalid username or password!' })
     }
-};
+
+    if (userExist && (await bcrypt.compare(password, userExist.password))) {
+        let login = await Logins.create({
+            username: userExist.username,
+            password: userExist.password,
+            token: generateToken(userExist._id)
+        })
+
+        const loggedInUser = {
+            firstname: userExist.firstname,
+            lastname: userExist.lastname,
+            address: userExist.address,
+            number: userExist.number,
+            city: userExist.city,
+            country: userExist.country,
+            zip: userExist.zip,
+            telephone: userExist.telephone,
+            email: userExist.email
+        }
+        return res.status(200).json({ login, loggedInUser })
+    } else {
+        res.status(400)
+        return res.json({ message: 'Invalid credentials!' })
+        //throw new Error('Invalid username or password!')
+    }
+});
+
+//Generate JWT
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '30d',
+    })
+}
 
 module.exports = loginUser

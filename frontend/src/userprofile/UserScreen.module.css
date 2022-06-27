@@ -1,0 +1,73 @@
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 50%;
+    padding-top: 180px;
+    min-height: 100vh;
+}
+
+.profileHeader {
+    width: 100%;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(161, 161, 161);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgb(163, 163, 163);
+    padding-bottom: 15px;
+}
+
+.personalDataBox {
+    width: 100%;
+     display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(163, 163, 163);
+}
+
+.personalData {
+     width: 100%;
+     display: flex;
+    color: rgb(161, 161, 161);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.data {
+    width: 100px;
+}
+
+.data2 {
+    width: 200px;
+    margin-left: 15px;
+}
+
+@media only screen and (max-width: 850px){
+    .container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 580px){
+    .container {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+  .personalData {
+    font-size: .9rem;
+}
+.profileHeader {
+    font-size: 1rem;
+}
+}

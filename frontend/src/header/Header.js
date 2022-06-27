@@ -34,6 +34,7 @@ const Header = () => {
             setRedHeart(false)
         }
     }, [liked.length, setRedHeart])
+    
 
    useEffect(() => {
         colorHeart()
@@ -58,6 +59,11 @@ const Header = () => {
         setUserName("")
         setLoggedIn(false)
         history.push('/')
+        localStorage.removeItem('loggedInUser')
+    }
+
+    const showUserProfile = ()=> {
+        history.push('/UserScreen')
     }
 
 
@@ -68,7 +74,7 @@ const Header = () => {
                 <div className={view ? 'subMenuLogout show' : 'subMenuLogout'} onMouseLeave={hide}>
                     <div className={headerstyle.logout}>
                         <span className={headerstyle.subMenuTitles} onClick={logOut}>Log Out</span>
-                        <span className={headerstyle.subMenuTitles}>User profile</span>
+                        <span className={headerstyle.subMenuTitles} onClick={showUserProfile}>User profile</span>
                     </div>
                 </div>
 

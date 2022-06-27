@@ -3,13 +3,16 @@ import signinStyle from './Signin.module.css';
 import SigninForm from './SigninForm'
 import axios from 'axios'
 import { useGlobalContext } from '../Context';
+import { useHistory } from "react-router-dom";
 
 const Signin = () => {
+
+    let { setLoggedIn, setUserName } = useGlobalContext()
 
     const [success, setSuccess] = React.useState(false);
     const [error, setError] = React.useState(false)
 
-    let { setLoggedIn, setUserName} = useGlobalContext()
+    const history = useHistory()
 
     React.useEffect(() => {
         const timer = setTimeout(() => {
@@ -28,17 +31,20 @@ const Signin = () => {
 
         try {
             const response = await axios.post('logins', data)
-            const name = JSON.parse(response.config.data)
+            //const name = JSON.parse(response.config.data)
             if (response.status === 200) {
                 setSuccess(true)
                 setLoggedIn(true)
-                setUserName(`Hi, ${name.username}!`)
+                localStorage.setItem('loggedInUser', JSON.stringify(response.data.loggedInUser))
+                const name = localStorage.getItem('loggedInUser') ? JSON.parse(localStorage.getItem('loggedInUser')) : {}
+                setUserName(`Hi, ${name.firstname}`)
+                history.push('/paintings')
             }
         } catch (error) {
             setSuccess(false)
             setError(true)
         }
-}
+    }
 
     return (
         <div className={signinStyle.container}>

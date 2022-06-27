@@ -142,6 +142,13 @@
   }
 }
 
+@media only screen and (max-width: 360px) {
+  .beSmart {
+    font-size: 1.1rem;
+    word-spacing: .4rem;
+  }
+}
+
 .link {
     text-decoration: none;
     cursor: pointer;
@@ -275,6 +282,12 @@ font-size: 1.2rem;
   }
   .paintings {
     font-size: 1rem;
+}
+}
+
+@media only screen and (max-width: 380px) {
+  .paintings {
+    font-size: .9rem;
 }
 }
 

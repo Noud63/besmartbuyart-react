@@ -1,20 +1,20 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import axios from 'axios'
 
 const allData = React.createContext()
 
 const Context = ({ children }) => {
 
-    const [liked, setLiked] = React.useState([]);
-    const [cart, setCart] = React.useState([]);
-    const [paintings, setPaintings] = React.useState([])
-    const [loggedIn, setLoggedIn] = React.useState(false)
-    const [userName, setUserName] = React.useState("")
+    const [liked, setLiked] = useState([]);
+    const [cart, setCart] = useState([]);
+    const [paintings, setPaintings] = useState([])
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [userName, setUserName] = useState("")
 
-    let [total, setTotal] = React.useState(0)
-    let [vat, setVat] = React.useState(0)
-    let [price, setPrice] = React.useState(0)
-    let [units, setUnits] = React.useState(0)
+    let [total, setTotal] = useState(0)
+    let [vat, setVat] = useState(0)
+    let [price, setPrice] = useState(0)
+    let [units, setUnits] = useState(0)
 
 
     const loadProducts = useCallback(() => {
@@ -34,7 +34,7 @@ const Context = ({ children }) => {
         fetchData()
     }, [])
 
-    React.useEffect(() => {
+    useEffect(() => {
         loadProducts()
     }, [loadProducts])
 
@@ -43,10 +43,21 @@ const Context = ({ children }) => {
         localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart([]);
         localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings([]);
         localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked([]);
+
+        const name = {};
+        if (localStorage.getItem('loggedInUser')){
+            const name = JSON.parse(localStorage.getItem('loggedInUser'))
+            setLoggedIn(true)
+            setUserName(`Hi, ${name.firstname}`)
+        }
+        if(name === undefined){
+            setLoggedIn(false)
+            setUserName("")
+        }
     }, []);
     
 
-    React.useEffect(() => {
+    useEffect(() => {
         storage()
     }, [storage]);
 
@@ -71,16 +82,22 @@ const Context = ({ children }) => {
         setTotal(total)
     }, [cart])
 
-    React.useEffect(() => {
+    useEffect(() => {
         setTotals()
     }, [setTotals])
 
 
     return (
         <allData.Provider value={{
-            liked, setLiked, cart, setCart,
-            paintings, setPaintings, userName, setUserName,
-            loggedIn, setLoggedIn, total, vat, price, units
+            liked, setLiked, 
+            cart, setCart,
+            paintings, setPaintings, 
+            userName, setUserName,
+            loggedIn, setLoggedIn, 
+            total, 
+            vat, 
+            price, 
+            units
         }}>{children}</allData.Provider>
     )
 }

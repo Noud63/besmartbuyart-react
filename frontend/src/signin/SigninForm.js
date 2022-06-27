@@ -1,6 +1,7 @@
 import React from 'react'
 import signinStyle from './Signin.module.css'
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 const SigninForm = ({loginData}) => {
 
@@ -8,7 +9,7 @@ const SigninForm = ({loginData}) => {
 
     const [passwordShown, setPasswordShown] = React.useState(false);
     const [password, setPassword] = React.useState('');
-   
+
     const togglePasswordVisiblity = (e) => {
         if (!password && e.target.checked === true) {
             e.target.checked = false
@@ -18,7 +19,6 @@ const SigninForm = ({loginData}) => {
     };
 
     const onSubmit = (data) => {
-        
         loginData(data)
         reset()
     };

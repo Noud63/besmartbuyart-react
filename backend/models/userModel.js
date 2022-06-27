@@ -45,11 +45,7 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         // required: true
-    },
-    repeatpassword: {
-        type: String,
-        // required: true
-    },
+    }
 },
     {
         timestamps: true
@@ -57,7 +53,7 @@ const userSchema = mongoose.Schema({
 )
 
 // pre = before you save your model
-// Use regular function cause of the 'this' keyword
+// Use regular function to use the 'this' keyword
 userSchema.pre('save', async function (next) {
 
     if (!this.isModified('password')) return next();
@@ -65,9 +61,7 @@ userSchema.pre('save', async function (next) {
     try {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(this.password, salt)
-        const hashedRepeatPassword = await bcrypt.hash(this.repeatpassword, salt)
         this.password = hashedPassword
-        this.repeatpassword = hashedRepeatPassword
         next()
     } catch (error) {
         next(error)

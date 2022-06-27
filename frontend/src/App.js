@@ -10,6 +10,7 @@ import Checkout from './checkout/Checkout'
 import Signin from './signin/Signin'
 import Signup from './register/Signup'
 import Payment from './payment/Payment'
+import UserScreen from './userprofile/UserScreen'
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,6 +32,7 @@ function App() {
           <Route path='/payment' component={Payment} />
           <Route path='/signin' component={Signin} />
           <Route path='/signup' component={Signup} />
+          <Route path='/userscreen' component={UserScreen} />
         </Switch>
         <Footer />
       </Router>
