@@ -7,7 +7,7 @@ import Likes from '../likes/Likes'
 
 const Header = () => {
 
-    let { cart, liked, loggedIn, setLoggedIn, userName, setUserName } = useGlobalContext()
+    let { cart, setCart, liked, setLiked, loggedIn, setLoggedIn, userName, setUserName, paintings, setPaintings} = useGlobalContext()
 
     const [redHeart, setRedHeart] = useState(false)
     const [showLikes, setShowLikes] = useState(false)
@@ -34,9 +34,9 @@ const Header = () => {
             setRedHeart(false)
         }
     }, [liked.length, setRedHeart])
-    
 
-   useEffect(() => {
+
+    useEffect(() => {
         colorHeart()
         window.addEventListener('scroll', handleScroll)
     }, [colorHeart]);
@@ -58,11 +58,25 @@ const Header = () => {
     const logOut = () => {
         setUserName("")
         setLoggedIn(false)
-        history.push('/')
+        setLiked([])
+        setCart([])
         localStorage.removeItem('loggedInUser')
+        localStorage.removeItem('LIKES')
+        localStorage.removeItem('CART')
+        if (localStorage.getItem("LIKES") === null) {
+            paintings = paintings.map(el => {
+                el.like = false
+                liked.push(el)
+                return el
+            })
+            setPaintings([...paintings])
+            localStorage.setItem('PAINTINGS', JSON.stringify(paintings))
+        }
+        history.push('/')
     }
 
-    const showUserProfile = ()=> {
+
+    const showUserProfile = () => {
         history.push('/UserScreen')
     }
 

@@ -23,8 +23,7 @@ const Likes = ({ showLikes, setShowLikes }) => {
     }, []);
 
 
-
-    //Remove item from likes list
+     //Remove item from likes list
     const removeItemFromLikeslist = (_id) => {
         liked = liked.filter(item => {
             return item._id !== _id;

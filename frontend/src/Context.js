@@ -26,12 +26,14 @@ const Context = ({ children }) => {
                 await axios.get('artworks').then(res => {
                     const data = res.data
                     setPaintings(data)
+                    //localStorage.setItem('PAINTINGS', JSON.stringify(paintings))
                 })
             } catch (error) {
                 console.log(error.message)
             }
         }
         fetchData()
+       
     }, [])
 
     useEffect(() => {
@@ -40,22 +42,22 @@ const Context = ({ children }) => {
 
 
     const storage = useCallback(() => {
-        localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart([]);
-        localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings([]);
-        localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked([]);
+        localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart(cart);
+        localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings(paintings);
+        localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked(liked);
 
         const name = {};
-        if (localStorage.getItem('loggedInUser')){
+        if (localStorage.getItem('loggedInUser')) {
             const name = JSON.parse(localStorage.getItem('loggedInUser'))
             setLoggedIn(true)
             setUserName(`Hi, ${name.firstname}`)
         }
-        if(name === undefined){
+        if (name === undefined) {
             setLoggedIn(false)
             setUserName("")
         }
     }, []);
-    
+
 
     useEffect(() => {
         storage()
@@ -89,14 +91,14 @@ const Context = ({ children }) => {
 
     return (
         <allData.Provider value={{
-            liked, setLiked, 
+            liked, setLiked,
             cart, setCart,
-            paintings, setPaintings, 
+            paintings, setPaintings,
             userName, setUserName,
-            loggedIn, setLoggedIn, 
-            total, 
-            vat, 
-            price, 
+            loggedIn, setLoggedIn,
+            total,
+            vat,
+            price,
             units
         }}>{children}</allData.Provider>
     )
