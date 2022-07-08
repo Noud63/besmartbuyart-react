@@ -69,6 +69,12 @@ const Header = () => {
                             </div>
                         </div>
                     </Link>
+
+                    <div className={headerstyle.link}>
+                        <Link to="/signin" className={headerstyle.link}><span className={headerstyle.paintings}>Sign in -</span></Link>
+                        <Link to="/signup" className={headerstyle.link}><span className={headerstyle.paintings}> Sign up</span></Link>
+                    </div>
+
             
                     <div className={headerstyle.link}>
                         <div className={headerstyle.likes}>
