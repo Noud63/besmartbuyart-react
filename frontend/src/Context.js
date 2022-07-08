@@ -8,8 +8,6 @@ const Context = ({ children }) => {
     const [liked, setLiked] = useState([]);
     const [cart, setCart] = useState([]);
     const [paintings, setPaintings] = useState([])
-    const [loggedIn, setLoggedIn] = useState(false)
-    const [userName, setUserName] = useState("")
 
     let [total, setTotal] = useState(0)
     let [vat, setVat] = useState(0)
@@ -26,7 +24,6 @@ const Context = ({ children }) => {
                 await axios.get('artworks').then(res => {
                     const data = res.data
                     setPaintings(data)
-                    //localStorage.setItem('PAINTINGS', JSON.stringify(paintings))
                 })
             } catch (error) {
                 console.log(error.message)
@@ -42,21 +39,10 @@ const Context = ({ children }) => {
 
 
     const storage = useCallback(() => {
-        localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart(cart);
-        localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings(paintings);
-        localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked(liked);
-
-        const name = {};
-        if (localStorage.getItem('loggedInUser')) {
-            const name = JSON.parse(localStorage.getItem('loggedInUser'))
-            setLoggedIn(true)
-            setUserName(`Hi, ${name.firstname}`)
-        }
-        if (name === undefined) {
-            setLoggedIn(false)
-            setUserName("")
-        }
-    }, []);
+        localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart([]);
+        localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings([]);
+        localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked([]);
+    },[]);
 
 
     useEffect(() => {
@@ -94,8 +80,6 @@ const Context = ({ children }) => {
             liked, setLiked,
             cart, setCart,
             paintings, setPaintings,
-            userName, setUserName,
-            loggedIn, setLoggedIn,
             total,
             vat,
             price,
