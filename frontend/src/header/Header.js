@@ -7,7 +7,7 @@ import Likes from '../likes/Likes'
 
 const Header = () => {
 
-    let { cart,liked } = useGlobalContext()
+    let { cart,liked, userName, loggedIn } = useGlobalContext()
 
     const [redHeart, setRedHeart] = useState(false)
     const [showLikes, setShowLikes] = useState(false)
@@ -30,7 +30,6 @@ const Header = () => {
             setRedHeart(false)
         }
     }, [liked.length, setRedHeart])
-
 
     useEffect(() => {
         colorHeart()
@@ -70,12 +69,14 @@ const Header = () => {
                         </div>
                     </Link>
 
-                    <div className={headerstyle.link}>
-                        <Link to="/signin" className={headerstyle.link}><span className={headerstyle.paintings}>Sign in -</span></Link>
-                        <Link to="/signup" className={headerstyle.link}><span className={headerstyle.paintings}> Sign up</span></Link>
-                    </div>
+                    {loggedIn ? <div className={headerstyle.userName}>Hi, {userName}</div> : (
+                        <div className={headerstyle.link}>
+                            <Link to="/signin" className={headerstyle.link}><span className={headerstyle.paintings}>Sign in -</span></Link>
+                            <Link to="/signup" className={headerstyle.link}><span className={headerstyle.paintings}> Sign up</span></Link>
 
-            
+                        </div>
+                    )}
+                    
                     <div className={headerstyle.link}>
                         <div className={headerstyle.likes}>
                             <div className={headerstyle.heart} ><img src={redHeart ?

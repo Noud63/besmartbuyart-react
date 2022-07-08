@@ -2,8 +2,11 @@ import React from 'react'
 import signinStyle from './Signin.module.css';
 import SigninForm from './SigninForm'
 import axios from 'axios'
+import { useGlobalContext } from '../Context'
 
 const Signin = () => {
+
+    let {setUserName, setLoggedIn, userName } = useGlobalContext()
 
     const [success, setSuccess] = React.useState(false);
     const [error, setError] = React.useState(false)
@@ -25,17 +28,19 @@ const Signin = () => {
 
         try {
             const response = await axios.post('logins', data)
-            //const name = JSON.parse(response.config.data)
             if (response.status === 200) {
                 setSuccess(true)
-            }
+                const loggedInUser = response.data.login.username
+                setUserName(loggedInUser)
+                setLoggedIn(true)
+               }
         } catch (error) {
             setSuccess(false)
             setError(true)
         }
     }
 
-    return (
+return (
         <div className={signinStyle.container}>
             <div className={signinStyle.wrapper}>
                 <div className={signinStyle.login}>Signin</div>

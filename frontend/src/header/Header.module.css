@@ -154,6 +154,12 @@
     cursor: pointer;
 }
 
+.userName {
+  font-size: 1.2rem;
+    color: rgb(163, 163, 163);
+    font-family: 'times';
+}
+
 .paintings {
     font-size: 1.2rem;
     color: rgb(163, 163, 163);
