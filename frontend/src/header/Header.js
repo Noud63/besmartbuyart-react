@@ -47,12 +47,17 @@ const Header = () => {
     }
 
     const subMenuShow = () => {
-        setShowSubMenu(true)
+        setShowSubMenu(prev => !prev)
     }
 
-    const subMenuHide = () => {
-        setShowSubMenu(false)
-    }
+   useEffect(()=> {
+       const closeSubMenu = (e) => {
+           if (e.target.textContent.slice(0, 2) !== 'Hi'){
+               setShowSubMenu(false)
+           }
+        }
+       document.body.addEventListener('click', closeSubMenu)
+   },[])
 
     const logout = () => {
         setLoggedIn(false)
@@ -78,10 +83,7 @@ const Header = () => {
 
         <div className={scrolled ? headerstyle.header : headerstyle.header + ' ' + headerstyle.hide}>
 
-            <div className={showSubMenu ?
-                headerstyle.logoutMenu + ' ' + headerstyle.show :
-                headerstyle.logoutMenu}
-                onMouseLeave={subMenuHide}>
+            <div className={showSubMenu ? headerstyle.logoutMenu + ' ' + headerstyle.show : headerstyle.logoutMenu} >
                 <div className={headerstyle.subMenuTitles} onClick={logout}>Logout</div>
                 <div className={headerstyle.subMenuTitles + ' ' + headerstyle.right} onClick={showUserProfile}>User Profile</div>
             </div>
@@ -109,7 +111,7 @@ const Header = () => {
                         </div>
                     </Link>
 
-                    {loggedIn ? <div className={headerstyle.userName} onMouseEnter={subMenuShow}>Hi, {userName}</div> : (
+                    {loggedIn ? <div className={headerstyle.userName} onClick={subMenuShow}>Hi, {userName}</div> : (
                         <div className={headerstyle.link}>
                             <Link to="/signin" className={headerstyle.link}><span className={headerstyle.paintings}>Sign in -</span></Link>
                             <Link to="/signup" className={headerstyle.link}><span className={headerstyle.paintings}> Sign up</span></Link>
