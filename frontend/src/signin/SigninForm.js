@@ -19,6 +19,7 @@ const SigninForm = ({loginData}) => {
 
     const onSubmit = (data) => {
         loginData(data)
+        console.log(data)
         if(loginData){
             localStorage.setItem('USERNAME', JSON.stringify(data.username))
         }

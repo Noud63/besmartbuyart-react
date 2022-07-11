@@ -6,10 +6,11 @@ const allData = React.createContext()
 const Context = ({ children }) => {
 
     const [liked, setLiked] = useState([]);
-    const [ cart, setCart ] = useState([]);
-    const [ paintings, setPaintings ] = useState([])
-    const [ userName, setUserName ] = useState("")
-    const [ loggedIn, setLoggedIn ] = useState(false)
+    const [cart, setCart] = useState([]);
+    const [paintings, setPaintings] = useState([]);
+    const [userName, setUserName] = useState("");
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [userData, setUserData] = useState({})
 
     let [total, setTotal] = useState(0)
     let [vat, setVat] = useState(0)
@@ -32,7 +33,6 @@ const Context = ({ children }) => {
             }
         }
         fetchData()
-       
     }, [])
 
     useEffect(() => {
@@ -44,13 +44,13 @@ const Context = ({ children }) => {
         localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart([]);
         localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings([]);
         localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked([]);
-        if (localStorage.getItem("USERNAME")){
+        if (localStorage.getItem("USERNAME")) {
             setLoggedIn(true)
             setUserName(JSON.parse(localStorage.getItem("USERNAME")))
-        }
-       
-    },[]);
-
+            setUserData(JSON.parse(localStorage.getItem("LOGGEDINUSER")))
+           }
+        
+    }, []);
 
     useEffect(() => {
         storage()
@@ -91,6 +91,8 @@ const Context = ({ children }) => {
             setUserName,
             loggedIn,
             setLoggedIn,
+            userData,
+            setUserData,
             total,
             vat,
             price,

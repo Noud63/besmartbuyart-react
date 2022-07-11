@@ -32,7 +32,9 @@ const loginUser = asyncHandler(async (req, res) => {
             telephone: userExist.telephone,
             email: userExist.email
         }
+
         return res.status(200).json({ login, loggedInUser })
+
     } else {
         res.status(400)
         return res.json({ message: 'Invalid credentials!' })

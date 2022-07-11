@@ -1,22 +1,26 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import headerstyle from './Header.module.css';
 import './Submenu.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useGlobalContext } from '../Context'
 import Likes from '../likes/Likes'
 
 const Header = () => {
 
-    let { cart,liked, userName, loggedIn } = useGlobalContext()
+    let { cart, setCart, liked, userName, loggedIn, setLoggedIn, paintings, setPaintings } = useGlobalContext()
 
     const [redHeart, setRedHeart] = useState(false)
     const [showLikes, setShowLikes] = useState(false)
     const [scrolled, setScrolled] = useState(true);
+    const [showSubMenu, setShowSubMenu] = useState(false);
+
+    const history = useHistory()
 
     const handleScroll = () => {
         const offset = window.scrollY;
         if (offset > 50) {
             setScrolled(false);
+            setShowSubMenu(false)
         }
         else {
             setScrolled(true);
@@ -42,11 +46,47 @@ const Header = () => {
         setShowLikes(!showLikes)
     }
 
+    const subMenuShow = () => {
+        setShowSubMenu(true)
+    }
+
+    const subMenuHide = () => {
+        setShowSubMenu(false)
+    }
+
+    const logout = () => {
+        setLoggedIn(false)
+        localStorage.removeItem('USERNAME')
+        localStorage.removeItem('LIKES')
+        localStorage.removeItem('CART')
+        paintings = paintings.map(el => {
+            el.like = false
+            return el
+        })
+        setCart([])
+        setRedHeart(false)
+        setPaintings(paintings)
+        localStorage.setItem("PAINTINGS", JSON.stringify(paintings))
+        history.push('/')
+    }
+
+    const showUserProfile = () => {
+        history.push('/userscreen')
+    }
 
     return (
-        <div className={scrolled ? headerstyle.header : headerstyle.header + ' ' + headerstyle.hide}>
-            <div className={headerstyle.subHeader}>
 
+        <div className={scrolled ? headerstyle.header : headerstyle.header + ' ' + headerstyle.hide}>
+
+            <div className={showSubMenu ?
+                headerstyle.logoutMenu + ' ' + headerstyle.show :
+                headerstyle.logoutMenu}
+                onMouseLeave={subMenuHide}>
+                <div className={headerstyle.subMenuTitles} onClick={logout}>Logout</div>
+                <div className={headerstyle.subMenuTitles + ' ' + headerstyle.right} onClick={showUserProfile}>User Profile</div>
+            </div>
+
+            <div className={headerstyle.subHeader}>
                 <div className={headerstyle.homeLink}>
                     <Link to="/" className={headerstyle.link}>
                         <div className={headerstyle.beSmart}>BE SMART BUY ART</div>
@@ -69,14 +109,14 @@ const Header = () => {
                         </div>
                     </Link>
 
-                    {loggedIn ? <div className={headerstyle.userName}>Hi, {userName}</div> : (
+                    {loggedIn ? <div className={headerstyle.userName} onMouseEnter={subMenuShow}>Hi, {userName}</div> : (
                         <div className={headerstyle.link}>
                             <Link to="/signin" className={headerstyle.link}><span className={headerstyle.paintings}>Sign in -</span></Link>
                             <Link to="/signup" className={headerstyle.link}><span className={headerstyle.paintings}> Sign up</span></Link>
 
                         </div>
                     )}
-                    
+
                     <div className={headerstyle.link}>
                         <div className={headerstyle.likes}>
                             <div className={headerstyle.heart} ><img src={redHeart ?

@@ -35,7 +35,6 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, artNr, technique })
         localStorage.setItem('PAINTINGS', JSON.stringify(paintings))
         localStorage.setItem('LIKES', JSON.stringify(liked))
     }
-      
 
     //lightbox options and styling
     const options = {
@@ -74,7 +73,7 @@ return (
             <SRLWrapper options={options}>
                 <div className="pic">
                 <a href={process.env.PUBLIC_URL + `${imgBig}`}>
-                        <img src={process.env.PUBLIC_URL + `${imgSrc}`} alt={name} className="paintingPic" />
+                        <img src={process.env.PUBLIC_URL + `${imgSrc}`} alt={name} className="paintingPic"/>
                     </a>
                 </div>
             </SRLWrapper>

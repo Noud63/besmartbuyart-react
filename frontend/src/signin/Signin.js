@@ -6,7 +6,7 @@ import { useGlobalContext } from '../Context'
 
 const Signin = () => {
 
-    let {setUserName, setLoggedIn, userName } = useGlobalContext()
+    let {setUserName, setLoggedIn, setUserData} = useGlobalContext()
 
     const [success, setSuccess] = React.useState(false);
     const [error, setError] = React.useState(false)
@@ -33,6 +33,8 @@ const Signin = () => {
                 const loggedInUser = response.data.login.username
                 setUserName(loggedInUser)
                 setLoggedIn(true)
+                setUserData(response.data.loggedInUser)
+                localStorage.setItem('LOGGEDINUSER', JSON.stringify(response.data.loggedInUser))
                }
         } catch (error) {
             setSuccess(false)

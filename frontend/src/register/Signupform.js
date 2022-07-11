@@ -24,14 +24,15 @@ const Signupform = ({ setOverlay, setFirstname, getUserData }) => {
 
     
     const onSubmit = data => {
+        console.log(data)
         if (data.password !== data.repeatpassword) {
             setError(true)
             return
         }
-        // if (data.password.length < 8) {
-        //     setError2(true)
-        //     return
-        // }
+        if (data.password.length < 8) {
+            setError2(true)
+            return
+        }
         getUserData(data)
 
         const firstname = data.firstname
