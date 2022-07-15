@@ -78,6 +78,7 @@ const Header = () => {
             el.like = false
             return el
         })
+        liked.length = 0
         setCart([])
         setRedHeart(false)
         setPaintings(paintings)

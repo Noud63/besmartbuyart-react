@@ -48,6 +48,7 @@ const Likes = ({ showLikes, setShowLikes }) => {
         localStorage.setItem('LIKES', JSON.stringify(liked))
     }
 
+
     const class1 = showLikes && scrolled ? "likesContainer top" : "likesContainer show"
     const class2 = showLikes && !scrolled  ? "likesContainer show" : "likesContainer"
 
