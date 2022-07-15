@@ -15,7 +15,7 @@ const Context = ({ children }) => {
     let [total, setTotal] = useState(0)
     let [vat, setVat] = useState(0)
     let [price, setPrice] = useState(0)
-    let [units, setUnits] = useState(0)
+    let [units, setUnits] = useState(1)
 
 
     const loadProducts = useCallback(() => {
@@ -24,9 +24,10 @@ const Context = ({ children }) => {
 
         const fetchData = async () => {
             try {
-                await axios.get('artworks').then(res => {
+                await axios.get('productinfo').then(res => {
                     const data = res.data
                     setPaintings(data)
+                    localStorage.setItem('PAINTINGS', JSON.stringify(data))
                 })
             } catch (error) {
                 console.log(error.message)
@@ -48,8 +49,8 @@ const Context = ({ children }) => {
             setLoggedIn(true)
             setUserName(JSON.parse(localStorage.getItem("USERNAME")))
             setUserData(JSON.parse(localStorage.getItem("LOGGEDINUSER")))
-           }
-        
+        }
+
     }, []);
 
     useEffect(() => {
@@ -80,7 +81,6 @@ const Context = ({ children }) => {
     useEffect(() => {
         setTotals()
     }, [setTotals])
-
 
     return (
         <allData.Provider value={{

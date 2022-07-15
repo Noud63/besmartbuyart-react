@@ -1,11 +1,10 @@
-const Artwork = require('./models/artworkModel')
-const products = require('./data/products')
+const ProductInfos = require('./models/productInfoModel')
+const products = require('./data/productsextra')
 
 const addDataToCollection = async () => {
     try {
-        await Artwork.deleteMany();
-
-        await Artwork.insertMany(products, function (err, result) {
+        await ProductInfos.deleteMany();
+        await ProductInfos.insertMany(products, function (err, result) {
             console.log('Data imported!'.green.inverse)
             console.log("Number of documents inserted: " + result.length);
         })

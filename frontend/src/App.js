@@ -4,6 +4,8 @@ import Header from './header/Header'
 import Home from './home/Home'
 import Footer from './footer/Footer'
 import Paintings from './paintings/Paintings'
+import Reproductions from './reproductions/Reproductions'
+import ProductInfo from './productinfo/ProductInfo'
 import Likes from './likes/Likes'
 import Cart from './cart/Cart'
 import Checkout from './checkout/Checkout'
@@ -26,6 +28,8 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/paintings' component={Paintings} />
+          <Route path='/reproductions' component={Reproductions} />
+          <Route path='/productinfo/:id' component={ProductInfo} />
           <Route path='/cart' component={Cart} />
           <Route path='/likes' component={Likes} />
           <Route path='/checkout' component={Checkout} />

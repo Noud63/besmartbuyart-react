@@ -1,8 +1,9 @@
 import React from 'react'
 import { useGlobalContext } from '../Context';
 import { SRLWrapper } from "simple-react-lightbox";
+import { Link } from 'react-router-dom'
 
-const ListItems = ({ _id, name, price, imgSrc, imgBig, like, artNr, technique }) => {
+const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
 
     let { liked, paintings, setPaintings, cart, setCart } = useGlobalContext()
 
@@ -83,9 +84,11 @@ return (
                 <div><span>Technique: </span>{technique}</div>
                 <div><span>Price: </span>&euro; {price},-</div>
             </div>
-
-            <div className="itemFooter">Art.nr:{artNr}</div>
-
+           
+           <Link to={`/productinfo/${_id}`} style={{textDecoration: 'none'}}>
+            <div className="itemFooter">Product Info</div>
+           </Link>
+            
         </div>
     )
 }

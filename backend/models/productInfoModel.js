@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
-const artworkSchema = mongoose.Schema({
-    artNr: {
-        type: String,
-        required: true
-    },
+const infoSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -36,6 +32,22 @@ const artworkSchema = mongoose.Schema({
     like: {
         type: Boolean,
         required: true
+    },
+    fullname: {
+        type: String,
+        required: true
+    },
+    size: {
+        type: String,
+        required: true
+    },
+    repro: {
+        type: String,
+        required: true
+    },
+    year: {
+        type: String,
+        required: true
     }
 },
     {
@@ -43,6 +55,6 @@ const artworkSchema = mongoose.Schema({
     }
 )
 
-const Artwork = mongoose.model('artworks', artworkSchema)
+const ProductInfos = mongoose.model('ProductInfos', infoSchema)
 
-module.exports = Artwork
+module.exports = ProductInfos

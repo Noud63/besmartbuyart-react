@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import headerstyle from './Header.module.css';
 import './Submenu.css';
 import { Link, useHistory } from "react-router-dom";
@@ -13,8 +13,11 @@ const Header = () => {
     const [showLikes, setShowLikes] = useState(false)
     const [scrolled, setScrolled] = useState(true);
     const [showSubMenu, setShowSubMenu] = useState(false);
+    const [showPaintingsMenu, setShowPaintingsMenu] = useState(false);
 
     const history = useHistory()
+    const userNameRef = useRef()
+    const paintingsRef = useRef()
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -50,14 +53,21 @@ const Header = () => {
         setShowSubMenu(prev => !prev)
     }
 
-   useEffect(()=> {
-       const closeSubMenu = (e) => {
-           if (e.target.textContent.slice(0, 2) !== 'Hi'){
-               setShowSubMenu(false)
-           }
+    const subMenuShowPaintings = () => {
+        setShowPaintingsMenu(prev => !prev)
+    }
+
+    useEffect(() => {
+        const closeSubMenu = (e) => {
+            if (e.target !== userNameRef.current) {
+                setShowSubMenu(false)
+            }
+            if (e.target !== paintingsRef.current) {
+                setShowPaintingsMenu(false)
+            }
         }
-       document.body.addEventListener('click', closeSubMenu)
-   },[])
+        document.body.addEventListener('click', closeSubMenu)
+    }, [])
 
     const logout = () => {
         setLoggedIn(false)
@@ -79,27 +89,40 @@ const Header = () => {
         history.push('/userscreen')
     }
 
+    const showPaintings = () => {
+        history.push('/paintings')
+    }
+
+    const showReproductions = () => {
+        history.push('/reproductions')
+    }
+
     return (
 
         <div className={scrolled ? headerstyle.header : headerstyle.header + ' ' + headerstyle.hide}>
+
 
             <div className={showSubMenu ? headerstyle.logoutMenu + ' ' + headerstyle.show : headerstyle.logoutMenu} >
                 <div className={headerstyle.subMenuTitles} onClick={logout}>Logout</div>
                 <div className={headerstyle.subMenuTitles + ' ' + headerstyle.right} onClick={showUserProfile}>User Profile</div>
             </div>
 
+            <div className={showPaintingsMenu ? headerstyle.paintingsMenu + ' ' + headerstyle.show2 : headerstyle.paintingsMenu} >
+                <div className={headerstyle.subMenuTitles} onClick={showPaintings}>Paintings</div>
+                <div className={headerstyle.subMenuTitles + ' ' + headerstyle.right} onClick={showReproductions}>Reproductions</div>
+            </div>
+
+
             <div className={headerstyle.subHeader}>
                 <div className={headerstyle.homeLink}>
                     <Link to="/" className={headerstyle.link}>
-                        <div className={headerstyle.beSmart}>BE SMART BUY ART</div>
+                        <div className={headerstyle.beSmart}><img src={process.env.PUBLIC_URL + '/icons/bsbalogo.png'} alt="" style={{ width: '1em' }} /> &nbsp;BE SMART BUY ART</div>
                     </Link>
                 </div>
 
                 <div className={headerstyle.menu}>
 
-                    <Link to="/paintings" className={headerstyle.link}>
-                        <div className={headerstyle.paintings}>PAINTINGS</div>
-                    </Link>
+                    <div className={headerstyle.paintings} onClick={subMenuShowPaintings} ref={paintingsRef}>PAINTINGS</div>
 
                     <Link to="/cart" className={headerstyle.link}>
                         <div className={headerstyle.shopping_bag}>
@@ -111,7 +134,7 @@ const Header = () => {
                         </div>
                     </Link>
 
-                    {loggedIn ? <div className={headerstyle.userName} onClick={subMenuShow}>Hi, {userName}</div> : (
+                    {loggedIn ? <div className={headerstyle.userName} onClick={subMenuShow} ref={userNameRef}>Hi, {userName} <img src={process.env.PUBLIC_URL + '/icons/link.png'} alt="" style={{ width: '15px' }} /></div> : (
                         <div className={headerstyle.link}>
                             <Link to="/signin" className={headerstyle.link}><span className={headerstyle.paintings}>Sign in -</span></Link>
                             <Link to="/signup" className={headerstyle.link}><span className={headerstyle.paintings}> Sign up</span></Link>

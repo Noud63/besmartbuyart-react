@@ -5,7 +5,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-     z-index: -999;
+    flex-direction: column;
+    z-index: -999;
+}
+
+.reproductionsHeader {
+    top: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(163, 163, 163);
+    font-size: 1.4rem;
+    margin-bottom: 50px;
 }
 
 .listContainer {
@@ -17,36 +29,36 @@
    margin-bottom: 50px;
 }
 
-.paintingsList {
+.reproductionsList {
   background-color: transparent;
   display: grid;
-  grid-template-columns: repeat(4, 280px);
+  grid-template-columns: repeat(2, 280px);
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 50px;
 }
 
 @media only screen and (max-width: 1400px){
-    .paintingsList {
-        grid-template-columns: repeat(3, 280px);
+    .reproductionsList {
+        grid-template-columns: repeat(2, 280px);
         grid-template-rows: repeat(4, 1fr);
 }
 }
 
 @media only screen and (max-width: 1050px){
-    .paintingsList {
+    .reproductionsList {
         grid-template-columns: repeat(2, 280px);
         grid-template-rows: repeat(4, 1fr);
 }
 }
 
 @media only screen and (max-width: 700px){
-    .paintingsList {
+    .reproductionsList {
         grid-template-columns: repeat(1, 280px);
         grid-template-rows: repeat(16, 1fr);
 }
 }
 
-.paintingsList .item {
+.reproductionsList .item {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -58,7 +70,7 @@
     border-bottom: 2px solid rgb(221, 125, 0);
 }
 
-.paintingsList .item .add-to-wish-list {
+.reproductionsList .item .add-to-wish-list {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,11 +84,11 @@
     cursor: pointer;
 }
 
-.paintingsList .item .add-to-wish-list.colorToggle {
+.reproductionsList .item .add-to-wish-list.colorToggle {
    background-color: rgba(175, 0, 0, 1);
 } 
 
-.paintingsList .item .add-to-cart {
+.reproductionsList .item .add-to-cart {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,8 +103,8 @@
 }
 
 
-.paintingsList .item .add-to-wish-list img, 
-.paintingsList .item .add-to-cart img
+.reproductionsList .item .add-to-wish-list img, 
+.reproductionsList .item .add-to-cart img
  {
     width: 28px;
     height: 28px;
@@ -105,7 +117,7 @@
     height: 130px;
 }
 
-.paintingsList .item .pic {
+.reproductionsList .item .pic {
     display: flex;
     align-items: flex-end;
     justify-content: center;

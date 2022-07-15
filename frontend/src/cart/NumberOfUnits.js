@@ -18,7 +18,7 @@ const NumberOfUnits = ({ id, cart, setCart, numberOfUnits, price }) => {
         setCart([...cart])
         localStorage.setItem('CART', JSON.stringify(cart))
     }
-
+    
     return (
         <>
             <div className={cartStyles.unitsAndPrice}>

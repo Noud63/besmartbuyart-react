@@ -123,6 +123,10 @@
     font-size: calc(18px + (24 - 18) * ((100vw - 320px) / (1980 - 320)));
 }
 
+.btnPlus, .btnMinus {
+    cursor: pointer;
+}
+
 .itemInfo {
     width: 40%;
     height: auto;
