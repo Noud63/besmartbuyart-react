@@ -21,8 +21,8 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
         localStorage.setItem("CART", JSON.stringify(cart));
     }
 
-    const toggleHeart = (_id) => {
-        if (liked.some(el => el._id === _id)) {
+    const toggleHeart = (id) => {
+        if (liked.some(el => el.id === _id)) {
             return
         }
         paintings = paintings.map(el => {
