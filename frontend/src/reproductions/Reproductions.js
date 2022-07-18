@@ -10,7 +10,7 @@ const Paintings = () => {
     return (
         <>
             <div className={styles.wrapper}>
-                <div className={styles.reproductionsHeader}>Preview, reproductions are coming soon!</div>
+                <div className={styles.reproductionsHeader}><span className={styles.preview}>Preview!</span><span className={styles.comingSoon}>Reproductions are coming soon!</span></div>
                 <div className={styles.listContainer}>
                       <div className={styles.reproductionsList}>
                         <img src={process.env.PUBLIC_URL + '/img/discoinframe.jpg'} alt="" style={{ width: '300px' }} />
