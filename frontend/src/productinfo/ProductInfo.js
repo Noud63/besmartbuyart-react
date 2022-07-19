@@ -13,6 +13,8 @@ const ProductInfo = () => {
         if (products) {
             let item = JSON.parse(products).find(el => el._id === id)
             setProject(item)
+            console.log(item)
+
         }
     }, [id]);
 
@@ -23,6 +25,7 @@ const ProductInfo = () => {
 
     }, [getProduct, id]);
 
+    
     return (
         <div className={styles.container}>
 

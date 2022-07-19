@@ -27,6 +27,7 @@ const Context = ({ children }) => {
                 await axios.get('productinfo').then(res => {
                     const data = res.data
                     setPaintings(data)
+                    console.log(data)
                     localStorage.setItem('PAINTINGS', JSON.stringify(data))
                 })
             } catch (error) {
