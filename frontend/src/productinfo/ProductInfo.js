@@ -14,7 +14,7 @@ const ProductInfo = () => {
             let item = JSON.parse(products).find(el => el._id === id)
             setProject(item)
             console.log(item)
-}
+        }
     }, [id]);
 
     useEffect(() => {
