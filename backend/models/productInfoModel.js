@@ -55,6 +55,6 @@ const infoSchema = mongoose.Schema({
     }
 )
 
-const ProductInfos = mongoose.model('ProductInfos', infoSchema)
+const ProductInfo = mongoose.model('ProductInfo', infoSchema, 'productinfos')
 
-module.exports = ProductInfos
+module.exports = ProductInfo

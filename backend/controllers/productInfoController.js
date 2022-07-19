@@ -1,11 +1,11 @@
 const express = require('express')
-const ProductInfos = require('../models/productInfoModel')
+const ProductInfo = require('../models/productInfoModel')
 
 const getProductInfo = async (req, res) => {
     try {
-        const productinfos = await ProductInfos.find({})
-        console.log(productinfos)
-        res.send(productinfos)
+        const productinfo = await ProductInfo.find({})
+        console.log(productinfo)
+        res.send(productinfo)
     } catch (error) {
         console.log(error)
     }
