@@ -27,7 +27,6 @@ const Context = ({ children }) => {
                 await axios.get('productinfo').then(res => {
                     const data = res.data
                     setPaintings(data)
-                    console.log(data)
                     localStorage.setItem('PAINTINGS', JSON.stringify(data))
                 })
             } catch (error) {
@@ -40,7 +39,6 @@ const Context = ({ children }) => {
     useEffect(() => {
         loadProducts()
     }, [loadProducts])
-
 
     const storage = useCallback(() => {
         localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart([]);
