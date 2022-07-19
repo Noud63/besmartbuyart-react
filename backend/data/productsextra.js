@@ -1,4 +1,4 @@
-const products = [
+const productsextra = [
     {
         "name": "D.I.S.C.O.",
         "year": 2015,
@@ -225,4 +225,4 @@ const products = [
     }
 ]
 
-module.exports = products
+module.exports = productsextra
