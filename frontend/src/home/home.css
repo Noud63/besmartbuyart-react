@@ -4,22 +4,23 @@
     justify-content: center;
     flex-direction: column;
     margin: 180px auto;
-    height: calc(100vh - 400px);
+    min-height: calc(100vh - 400px);
     width: 100%;
     color: rgb(145, 145, 145);
     font-size: 4rem;
 }
 
 .homePage2 {
-  display: none;
+    display: none;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin: 180px auto;
-    height: 100vh - 400px;
+    min-height: 100vh - 400px;
     width: 100%;
     color: rgb(145, 145, 145);
     font-size: 4rem;
+    border: 1px solid red;
 }
 
 .text {
@@ -68,11 +69,10 @@
   filter: drop-shadow(0px 6px 8px rgba(0,0,0,1));
 }
 
-@media only screen and (max-width: 700px) {
-  .text2 {
-     font-size: calc(15px + (24 - 15) * ((100vw - 320px) / (1980 - 320)));
+@media only screen and (max-width: 1000px) {
+  .textFrame {
+     width: 90%;
   }
-
 }
 
 @media only screen and (max-width: 700px) {
@@ -84,15 +84,10 @@
      display: flex;
   }
 
-}
-
-@media only screen and (max-width: 1000px) {
-  .textFrame {
-     width: 90%;
+  .text2 {
+     font-size: calc(15px + (24 - 15) * ((100vw - 320px) / (1980 - 320)));
   }
-}
 
-@media only screen and (max-width: 700px) {
   .textFrame {
      width: 90%;
      height: 450px;

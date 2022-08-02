@@ -14,7 +14,6 @@ const Home = () => {
                         <div className="source">(source: https://www.gobankingrates.com)</div>
                     </div>
                 </div>
-
             </div>
 
             <div className="homePage2">

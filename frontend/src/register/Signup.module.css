@@ -6,7 +6,7 @@
 .container2 {
     margin: 140px auto;
     width: 550px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .wrapper2 {
