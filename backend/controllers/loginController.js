@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt');
 const asyncHandler = require('express-async-handler')
 const jwt = require('jsonwebtoken')
 
+
+//@description    User authentication
+//@route          POST /logins
+//@access         Public
 const loginUser = asyncHandler(async (req, res) => {
     const { username, password } = req.body
 
@@ -16,6 +20,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     if (userExist && (await bcrypt.compare(password, userExist.password))) {
         let login = await Logins.create({
+            id: userExist._id,
             username: userExist.username,
             password: userExist.password,
             token: generateToken(userExist._id)
@@ -30,7 +35,7 @@ const loginUser = asyncHandler(async (req, res) => {
             country: userExist.country,
             zip: userExist.zip,
             telephone: userExist.telephone,
-            email: userExist.email
+            email: userExist.email,
         }
 
         return res.status(200).json({ login, loggedInUser })
