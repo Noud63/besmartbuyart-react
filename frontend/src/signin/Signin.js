@@ -33,8 +33,8 @@ const Signin = () => {
                 const loggedInUser = response.data.login.username
                 setUserName(loggedInUser)
                 setLoggedIn(true)
-                setUserData(response.data.loggedInUser)
-                localStorage.setItem('LOGGEDINUSER', JSON.stringify(response.data.loggedInUser))
+                setUserData(response.data)
+                localStorage.setItem('LOGGEDINUSER', JSON.stringify(response.data))
                }
         } catch (error) {
             setSuccess(false)

@@ -26,8 +26,12 @@ app.use('/artworks', require('./routes/artworkRoute'))
 app.use('/users', require('./routes/registerRoute'))
 app.use('/logins', require('./routes/loginRoute'))
 app.use('/productinfo', require('./routes/productInfoRoute'))
+app.use('/stripe', require('./routes/checkoutRoute'))
 
 //Place after routes
+
+app.use('/', express.static(__dirname + '../frontend/public/img'));
+
 app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
 
 app.get('/*', (req, res) => {

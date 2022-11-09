@@ -1,8 +1,9 @@
 <h1>Be Smart Buy Art</h1> 
 
 Art webshop build with React.<br>
-Frontend => React.js<br>
+Frontend => React.js, CSS3<br>
 Backend => Express, Node.js, MongoDB, Mongoose.<br><br>
+For checkout payment methods => Frontend & backend => Stripe.js<br><br>
 
 
 ![noudvandun](https://user-images.githubusercontent.com/38325801/175901571-1ccd90d3-934d-4691-92b0-64a681196615.png)<br><br>
@@ -12,5 +13,3 @@ Backend => Express, Node.js, MongoDB, Mongoose.<br><br>
 ![noudvandun](https://user-images.githubusercontent.com/38325801/142725768-43631b94-81be-4db1-9a91-b78c1bbaab43.png)<br><br>
 ![buyart2](https://user-images.githubusercontent.com/38325801/137291967-0eb3ed25-2682-44f8-b021-0af045a2af7e.png)<br><br>
 ![buyart5](https://user-images.githubusercontent.com/38325801/138449435-d5d077cc-51d1-4421-8e3c-13ae0aee0a95.png)<br><br>
-
-@noudvandun

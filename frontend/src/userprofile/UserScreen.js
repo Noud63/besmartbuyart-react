@@ -5,7 +5,7 @@ import { useGlobalContext } from '../Context'
 const UserScreen = () => {
 
     let { userData } = useGlobalContext()
-    
+    const { loggedInUser } = userData
     return (
         <div className={styles.container}>
 
@@ -15,47 +15,47 @@ const UserScreen = () => {
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Firstname</div>:
-                    <div className={styles.data2}>{userData.firstname}</div>
+                    <div className={styles.data2}>{loggedInUser.firstname}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Lastname</div>:
-                    <div className={styles.data2}>{userData.lastname}</div>
+                    <div className={styles.data2}>{loggedInUser.lastname}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Address</div>:
-                    <div className={styles.data2}>{userData.address}</div>
+                    <div className={styles.data2}>{loggedInUser.address}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Number</div>:
-                    <div className={styles.data2}>{userData.number}</div>
+                    <div className={styles.data2}>{loggedInUser.number}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Zip</div>:
-                    <div className={styles.data2}>{userData.zip}</div>
+                    <div className={styles.data2}>{loggedInUser.zip}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>City</div>:
-                    <div className={styles.data2}>{userData.city}</div>
+                    <div className={styles.data2}>{loggedInUser.city}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Country</div>:
-                    <div className={styles.data2}>{userData.country}</div>
+                    <div className={styles.data2}>{loggedInUser.country}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Email</div>:
-                    <div className={styles.data2}>{userData.email}</div>
+                    <div className={styles.data2}>{loggedInUser.email}</div>
                 </div>
 
                 <div className={styles.personalData}>
                     <div className={styles.data}>Telephone</div>:
-                    <div className={styles.data2}>{userData.telephone}</div>
+                    <div className={styles.data2}>{loggedInUser.telephone}</div>
                 </div>
 
             </div>

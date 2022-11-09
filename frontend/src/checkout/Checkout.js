@@ -19,7 +19,7 @@ const Checkout = () => {
 
     const onSubmit = data => {
         if (paymentMethod === '') {
-            alert('Chose paymentMethod')
+            alert('Choose paymentMethod')
             return
         }
         if(userName === ""){

@@ -262,6 +262,10 @@
     color: rgb(221, 125, 0);
 }
 
+.proceedLink {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1000px) {
   .cartContainer {
   width: 94%;

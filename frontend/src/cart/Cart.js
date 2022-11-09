@@ -51,7 +51,7 @@ const Cart = () => {
                     )
                 })}
 
-                <CartFooter price={price} vat={vat} total={total} />
+                <CartFooter price={price} vat={vat} total={total} cart={cart}/>
 
             </div>
         </div>

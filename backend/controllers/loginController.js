@@ -22,8 +22,7 @@ const loginUser = asyncHandler(async (req, res) => {
         let login = await Logins.create({
             id: userExist._id,
             username: userExist.username,
-            password: userExist.password,
-            token: generateToken(userExist._id)
+            password: userExist.password
         })
 
         const loggedInUser = {
@@ -36,6 +35,7 @@ const loginUser = asyncHandler(async (req, res) => {
             zip: userExist.zip,
             telephone: userExist.telephone,
             email: userExist.email,
+            token: generateToken(userExist._id)
         }
 
         return res.status(200).json({ login, loggedInUser })
