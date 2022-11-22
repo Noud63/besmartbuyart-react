@@ -4,7 +4,7 @@ import checkOutSuccessStyles from './CheckOutSuccess.module.css'
 const CheckOutSuccess = () => {
     return (
         <div className={checkOutSuccessStyles.container} >
-            <h1>Payed!</h1>
+            <h1>Congrats, you Payed!</h1>
         </div>
     )
 }

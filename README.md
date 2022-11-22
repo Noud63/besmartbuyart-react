@@ -2,7 +2,7 @@
 
 Art webshop build with React.<br>
 Frontend => React.js, CSS3<br>
-Backend => Express, Node.js, MongoDB, Mongoose.<br><br>
+Backend => Express, Node.js, MongoDB, Mongoose.<br>
 For checkout payment methods => Frontend & backend => Stripe.js<br><br>
 
 

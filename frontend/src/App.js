@@ -14,14 +14,14 @@ import Signin from './signin/Signin'
 import Signup from './register/Signup'
 import Payment from './payment/Payment'
 import UserScreen from './userprofile/UserScreen'
-import {
-  BrowserRouter as Router,
+// import StripeCheckOut from './cart/StripeCheckout'
+import {BrowserRouter as Router,
   Switch,
-  Route
-} from "react-router-dom";
+  Route}
+ from "react-router-dom";
 
 function App() {
- 
+
   return (
     <>
       <Router >
@@ -35,6 +35,7 @@ function App() {
           <Route path='/likes' component={Likes} />
           <Route path='/checkout' component={Checkout} />
           <Route path='/checkoutsuccess' component={CheckOutSuccess} />
+          {/* <Route path='/stripecheckout' component={StripeCheckOut} /> */}
           <Route path='/payment' component={Payment} />
           <Route path='/signin' component={Signin} />
           <Route path='/signup' component={Signup} />
