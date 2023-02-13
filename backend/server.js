@@ -38,6 +38,6 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 //    res.sendFile(path.resolve(__dirname, '../frontend/build/img'))
 // });
 
-app.use(notFound)
-app.use(errorHandler)
+// app.use(notFound)
+// app.use(errorHandler)
 
