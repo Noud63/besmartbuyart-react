@@ -15,13 +15,13 @@ app.use(cors())
 app.use(express.json())
 dotenv.config()
 // app.use('/', express.static(path.join(__dirname, '/besmartbuyartreact','frontend', 'public')))
-connectDB()
+connectDB().then(() => {
+   app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server running on port ${PORT}`.yellow)
+   })
+})
+
 addDataToCollection()
-
-
-// app.get('/', (req, res) => {
-//    console.log('Api up and running!')
-// })
 
 app.use('/artworks', require('./routes/artworkRoute'))
 app.use('/users', require('./routes/registerRoute'))
@@ -32,15 +32,12 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 //Place after routes
 
-app.use('/', express.static(path.join(__dirname, '../frontend', 'public')))
+// app.use('/', express.static(path.join(__dirname, '../frontend', 'public')))
 
-app.get('/*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, '../frontend/build/img'))
-});
+// app.get('/*', (req, res) => {
+//    res.sendFile(path.resolve(__dirname, '../frontend/build/img'))
+// });
 
 app.use(notFound)
 app.use(errorHandler)
 
-app.listen(PORT, '0.0.0.0', () => {
-   console.log(`Server running on port ${PORT}`.yellow)
-})
