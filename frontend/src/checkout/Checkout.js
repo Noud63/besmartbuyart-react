@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import checkoutstyles from './Checkout.module.css';
 import { Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../Context';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
@@ -11,7 +11,7 @@ const Checkout = () => {
 
     let { total, price, vat, units, userName } = useGlobalContext();
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -24,7 +24,7 @@ const Checkout = () => {
         }
         if(userName === ""){
                 alert('Login first to complete checkout!')
-                history.push('/signin');
+                navigate('/signin');
 
         } else {
             data = { ...data, 
@@ -39,7 +39,7 @@ const Checkout = () => {
             }}
             console.log(data)
             reset()
-            history.push('/payment');
+            navigate('/payment');
         }
 
     };

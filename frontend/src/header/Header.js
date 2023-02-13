@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import headerstyle from './Header.module.css';
 import './Submenu.css';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from '../Context'
 import Likes from '../likes/Likes'
 
@@ -15,7 +15,7 @@ const Header = () => {
     const [showSubMenu, setShowSubMenu] = useState(false);
     const [showPaintingsMenu, setShowPaintingsMenu] = useState(false);
 
-    const history = useHistory()
+    const navigate = useNavigate()
     const userNameRef = useRef()
     const paintingsRef = useRef()
 
@@ -83,19 +83,19 @@ const Header = () => {
         setRedHeart(false)
         setPaintings(paintings)
         localStorage.setItem("PAINTINGS", JSON.stringify(paintings))
-        history.push('/')
+        navigate('/')
     }
 
     const showUserProfile = () => {
-        history.push('/userscreen')
+        navigate('/userscreen')
     }
 
     const showPaintings = () => {
-        history.push('/paintings')
+        navigate('/paintings')
     }
 
     const showReproductions = () => {
-        history.push('/reproductions')
+       navigate('/reproductions')
     }
 
     return (

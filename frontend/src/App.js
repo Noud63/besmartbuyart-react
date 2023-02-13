@@ -15,10 +15,11 @@ import Signup from './register/Signup'
 import Payment from './payment/Payment'
 import UserScreen from './userprofile/UserScreen'
 // import StripeCheckOut from './cart/StripeCheckout'
-import {BrowserRouter as Router,
-  Switch,
-  Route}
- from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
     <>
       <Router >
         <Header />
-        <Switch>
+        <Routes>
           <Route path='/' exact component={Home} />
           <Route path='/paintings' component={Paintings} />
           <Route path='/reproductions' component={Reproductions} />
@@ -40,7 +41,7 @@ function App() {
           <Route path='/signin' component={Signin} />
           <Route path='/signup' component={Signup} />
           <Route path='/userscreen' component={UserScreen} />
-        </Switch>
+        </Routes>
         <Footer />
       </Router>
     </>

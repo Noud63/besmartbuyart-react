@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGlobalContext } from '../Context';
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import cartStyles from './Cart.module.css'
 
 const CheckoutButton = ({ cart }) => {
@@ -10,7 +10,7 @@ const CheckoutButton = ({ cart }) => {
 
     const { login } = userData
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const checkOut = async () => {
         if (!loggedIn) {
