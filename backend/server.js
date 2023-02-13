@@ -9,7 +9,7 @@ const colors = require('colors')
 const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const addDataToCollection = require('./seeder')
-const { notFound, errorHandler } = require('./middleware/errorMiddleware')
+// const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 
 app.use(cors())
 app.use(express.json())

@@ -30,7 +30,6 @@ const CheckoutButton = ({ cart }) => {
 
     }
 
-    console.log(cart, userData)
     return (
         <div className={cartStyles.checkout}>
             <div className={cartStyles.proceedLink} onClick={checkOut} style={{ textDecoration: 'none', color: 'rgb(221, 125, 0)' }}>Proceed Checkout</div>
