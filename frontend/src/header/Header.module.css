@@ -15,7 +15,7 @@
 }
 
 .subHeader {
-    width: 100%;
+    width: 100vw;
     height: auto;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
 
 .logoutMenu{
     position: absolute;
-    top: 0px;
+    top: 0;
     right: 0;
     background-color:  rgb(211, 120, 0);
     display: flex;

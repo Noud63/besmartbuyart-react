@@ -32,11 +32,11 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 // Place after routes
 
-app.use('/', express.static(path.join(__dirname, '../frontend', 'public')))
+// app.use('/', express.static(path.join(__dirname, '../frontend', 'public')))
 
-app.get('/*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, '../frontend/build/img'))
-});
+// app.get('/*', (req, res) => {
+//    res.sendFile(path.resolve(__dirname, '../frontend/build/img'))
+// });
 
 // app.use(notFound)
 // app.use(errorHandler)
