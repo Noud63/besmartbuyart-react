@@ -1,7 +1,8 @@
 import React from 'react'
 import { useGlobalContext } from '../Context';
-import { SRLWrapper } from "simple-react-lightbox";
+// import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from 'react-router-dom'
+import ImageEnlarge from  '../lightbox'
 
 const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
 
@@ -70,14 +71,15 @@ return (
             <div className="add-to-cart" onClick={() => getProduct(_id)}>
                 <img src={process.env.PUBLIC_URL + '/icons/bag-plus.png'} alt="" />
             </div >
-
-            <SRLWrapper options={options}>
-                <div className="pic">
+       
+             <ImageEnlarge name={name}  imgBig={imgBig}  imgSrc={imgSrc}/>
+            {/* <SRLWrapper options={options}> */}
+            {/* <div className="pic">
                 <a href={process.env.PUBLIC_URL + `${imgBig}`}>
                         <img src={process.env.PUBLIC_URL + `${imgSrc}`} alt={name} className="paintingPic"/>
                     </a>
-                </div>
-            </SRLWrapper>
+            </div> */}
+            {/* </SRLWrapper> */}
 
             <div className="info">
                 <div><span>Title: </span>{name}</div>

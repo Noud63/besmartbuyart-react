@@ -28,19 +28,19 @@ function App() {
       <Router >
         <Header />
         <Routes>
-          <Route path='/' exact component={Home} />
-          <Route path='/paintings' component={Paintings} />
-          <Route path='/reproductions' component={Reproductions} />
-          <Route path='/productinfo/:id' component={ProductInfo} />
-          <Route path='/cart' component={Cart} />
-          <Route path='/likes' component={Likes} />
-          <Route path='/checkout' component={Checkout} />
-          <Route path='/checkoutsuccess' component={CheckOutSuccess} />
+          <Route path='/' element={<Home/>} />
+          <Route path='/paintings' element={<Paintings/>} />
+          <Route path='/reproductions' element={<Reproductions/>} />
+          <Route path='/productinfo/:id' element={<ProductInfo/>} />
+          <Route path='/cart' element={<Cart/>} />
+          <Route path='/likes' element={<Likes/>} />
+          <Route path='/checkout' element={<Checkout/>} />
+          <Route path='/checkoutsuccess' element={<CheckOutSuccess/>} />
           {/* <Route path='/stripecheckout' component={StripeCheckOut} /> */}
-          <Route path='/payment' component={Payment} />
-          <Route path='/signin' component={Signin} />
-          <Route path='/signup' component={Signup} />
-          <Route path='/userscreen' component={UserScreen} />
+          <Route path='/payment' element={<Payment/>} />
+          <Route path='/signin' element={<Signin/>} />
+          <Route path='/signup' element={<Signup/>} />
+          <Route path='/userscreen' element={<UserScreen/>} />
         </Routes>
         <Footer />
       </Router>

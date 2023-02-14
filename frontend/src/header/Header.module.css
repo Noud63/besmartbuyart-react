@@ -6,6 +6,8 @@
 .header {
     position:fixed;
     top:0;
+    right:0;
+    left: 0;
     width: 100%;
     transition: top .5s ease-in-out;
     background-color:  rgb(99, 99, 99);

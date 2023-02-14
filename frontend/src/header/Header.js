@@ -95,7 +95,7 @@ const Header = () => {
     }
 
     const showReproductions = () => {
-       navigate('/reproductions')
+        navigate('/reproductions')
     }
 
     return (
@@ -123,7 +123,7 @@ const Header = () => {
 
                 <div className={headerstyle.menu}>
 
-                    <div className={headerstyle.paintings} onClick={subMenuShowPaintings} ref={paintingsRef}>PAINTINGS</div>
+                    <div className={headerstyle.paintings} onClick={subMenuShowPaintings} ref={paintingsRef}>Artwork</div>
 
                     <Link to="/cart" className={headerstyle.link}>
                         <div className={headerstyle.shopping_bag}>
