@@ -16,6 +16,7 @@ app.use(express.json())
 dotenv.config()
 // app.use('/', express.static(path.join(__dirname, '/besmartbuyartreact','frontend', 'public')))
 connectDB().then(() => {
+   console.log(__dirname)
    app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server running on port ${PORT}`.yellow)
    })
@@ -32,10 +33,11 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 // Place after routes
 // Heroku
-app.use(express.static(path.join(__dirname, './frontend', 'public')))
+
+app.use(express.static(path.join(__dirname, '../frontend', 'public')))
 
 app.get('/*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, './frontend/build/index.html'))
+   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
 });
 
 //Cyclic
