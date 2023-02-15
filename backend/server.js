@@ -16,7 +16,6 @@ app.use(express.json())
 dotenv.config()
 // app.use('/', express.static(path.join(__dirname, '/besmartbuyartreact','frontend', 'public')))
 connectDB().then(() => {
-   console.log(__dirname)
    app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server running on port ${PORT}`.yellow)
    })
@@ -43,10 +42,10 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 //Serving the frontend
 
 
-app.use(express.static(path.join(__dirname, "./frontend/build")))
+app.use('/', express.static(path.join(__dirname, "../frontend/build")))
 
 app.get("*", (_, res) => {
-     res.sendFile(path.join(__dirname, "./frontend/build/index.html"),
+     res.sendFile(path.join(__dirname, "../frontend/build/index.html"),
      function(err){
         res.status(500).send(err)
      }
