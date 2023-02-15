@@ -14,7 +14,6 @@ import Signin from './signin/Signin'
 import Signup from './register/Signup'
 import Payment from './payment/Payment'
 import UserScreen from './userprofile/UserScreen'
-// import StripeCheckOut from './cart/StripeCheckout'
 import {
   BrowserRouter as Router,
   Routes,
