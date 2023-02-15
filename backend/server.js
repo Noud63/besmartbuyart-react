@@ -9,7 +9,6 @@ const colors = require('colors')
 const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const addDataToCollection = require('./seeder')
-const { dirname } = require('path')
 // const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 
 app.use(cors())
@@ -43,10 +42,10 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 //Serving the frontend
 
 
-app.use('/', express.static(path.join(__dirname, "/besmartbuyartreact/frontend/build")))
+app.use('/', express.static(path.join(__dirname, "./frontend/build")))
 
 app.get("*", function(req, res){
-     res.sendFile(path.join(__dirname, "/besmartbuyartreact/frontend/build/index.html"),
+     res.sendFile(path.join(__dirname, "./frontend/build/index.html"),
      function(err){
         res.status(500).send(err)
      }
