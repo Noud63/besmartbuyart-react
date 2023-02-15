@@ -32,25 +32,25 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 // Place after routes
 // Heroku
-// app.use('/', express.static(path.join(__dirname, '../frontend', 'public')))
+app.use('/', express.static(path.join(__dirname, '../frontend', 'public')))
 
-// app.get('/*', (req, res) => {
-//    res.sendFile(path.resolve(__dirname, '../frontend/build/img'))
-// });
+app.get('/*', (req, res) => {
+   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+});
 
 //Cyclic
 //Serving the frontend
 
 
-app.use('/', express.static(path.join(__dirname, "../frontend/build")))
+// app.use('/', express.static(path.join(__dirname, "../frontend/build")))
 
-app.get("*", (_, res) => {
-     res.sendFile(path.join(__dirname, "../frontend/build/index.html"),
-     function(err){
-        res.status(500).send(err)
-     }
-     )
-})
+// app.get("*", (_, res) => {
+//      res.sendFile(path.join(__dirname, "../frontend/build/index.html"),
+//      function(err){
+//         res.status(500).send(err)
+//      }
+//      )
+// })
 
 // app.use(notFound)
 // app.use(errorHandler)
