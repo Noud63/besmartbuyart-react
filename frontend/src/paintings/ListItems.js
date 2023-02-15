@@ -39,23 +39,23 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
     }
 
     //lightbox options and styling
-    const options = {
-        buttons: {
-            iconColor: "#ffffff",
-            iconPadding: "10px",
-            backgroundColor: "transparent",
-        },
-        caption: {
-            captionColor: "#61O6O4",
-            captionFontSize: "20px",
-        },
-        settings: {
-            overlayColor: "rgb(71, 71, 71, .7)",
-        },
-        thumbnails: {
-            showThumbnails: false,
-        },
-    };
+    // const options = {
+    //     buttons: {
+    //         iconColor: "#ffffff",
+    //         iconPadding: "10px",
+    //         backgroundColor: "transparent",
+    //     },
+    //     caption: {
+    //         captionColor: "#61O6O4",
+    //         captionFontSize: "20px",
+    //     },
+    //     settings: {
+    //         overlayColor: "rgb(71, 71, 71, .7)",
+    //     },
+    //     thumbnails: {
+    //         showThumbnails: false,
+    //     },
+    // };
 
 
 return (

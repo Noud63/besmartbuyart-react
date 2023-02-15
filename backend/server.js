@@ -15,7 +15,7 @@ const { dirname } = require('path')
 app.use(cors())
 app.use(express.json())
 dotenv.config()
-// app.use('/', express.static(path.join(__dirname, '/besmartbuyartreact','frontend', 'public')))
+
 connectDB().then(() => {
    console.log(__dirname)
    app.listen(PORT, '0.0.0.0', () => {
@@ -33,27 +33,13 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 
 // Place after routes
-// Heroku
+// Cyclic, Heroku => Serving the frontend
 
 app.use('/', express.static(path.join(__dirname, '../frontend/build')))
 
 app.get('*', (req, res) => {
    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
 });
-
-//Cyclic
-//Serving the frontend
-
-
-// app.use(express.static(path.join(__dirname, "./frontend/build")))
-
-// app.get("*", function(req, res){
-//      res.sendFile(path.join(__dirname, "./frontend/build/index.html"),
-//      function(err){
-//         res.status(500).send(err)
-//      }
-//      )
-// })
 
 // app.use(notFound)
 // app.use(errorHandler)
