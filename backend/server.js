@@ -4,7 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const router = express.Router()
-const path = require("path");
+const path = require('path');
 const colors = require('colors')
 const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
@@ -17,8 +17,8 @@ app.use(express.json())
 dotenv.config()
 
 connectDB().then(() => {
-   app.listen(REACT_APP_PORT, () => {
-      console.log(`Server running on port ${REACT_APP_PORT}`.yellow)
+   app.listen(process.env.REACT_APP_PORT, () => {
+      console.log(`Server running on port ${process.env.REACT_APP_PORT}`.yellow)
    })
 })
 
@@ -42,4 +42,3 @@ app.get('*', (req, res) => {
 
 // app.use(notFound)
 // app.use(errorHandler)
-
