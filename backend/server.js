@@ -17,7 +17,7 @@ app.use(express.json())
 dotenv.config()
 
 connectDB().then(() => {
-   app.listen(PORT, '0.0.0.0', () => {
+   app.listen(REACT_APP_PORT, '0.0.0.0', () => {
       console.log(`Server running on port ${REACT_APP_PORT}`.yellow)
    })
 })
