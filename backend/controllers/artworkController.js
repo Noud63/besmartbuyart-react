@@ -3,6 +3,7 @@ const Artwork = require('../models/artworkModel')
 
 const getArtworks = async (req, res) => {
     const artworks = await Artwork.find({})
+    console.log(artworks)
     res.send(artworks)
 }
 
