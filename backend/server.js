@@ -9,6 +9,7 @@ const colors = require('colors')
 const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
 const addDataToCollection = require('./seeder')
+const __dirname = path.resolve()
 // const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 
 app.use(cors())
@@ -32,10 +33,10 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 // Place after routes
 // Cyclic, Render => Serving the frontend
-app.use('/', express.static(path.join(__dirname, '/frontend/build')))
+app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
 
 app.get('*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, '/frontend/build/index.html'))
+   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
 });
 
 // app.use(notFound)
