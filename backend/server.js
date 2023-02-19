@@ -6,7 +6,7 @@ const dotenv = require('dotenv')
 const router = express.Router()
 const path = require("path");
 const colors = require('colors')
-const PORT = process.env.PORT || 5000
+const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
 const addDataToCollection = require('./seeder')
 const { dirname } = require('path')
@@ -18,7 +18,7 @@ dotenv.config()
 
 connectDB().then(() => {
    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`Server running on port ${PORT}`.yellow)
+      console.log(`Server running on port ${REACT_APP_PORT}`.yellow)
    })
 })
 
