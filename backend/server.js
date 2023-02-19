@@ -32,7 +32,6 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 // Place after routes
 // Cyclic, Render => Serving the frontend
-
 app.use('/', express.static(path.join(__dirname, '../frontend/build')))
 
 app.get('*', (req, res) => {
