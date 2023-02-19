@@ -2,7 +2,7 @@
   "name": "besmartbuyartreact",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./backend/server.js",
   "engines": {
     "node": "16.x",
     "npm": "8.3.1"
