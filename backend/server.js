@@ -27,6 +27,7 @@ connectDB().then(() => {
 
 addDataToCollection()
 
+
 app.use('/artworks', require('./routes/artworkRoute'))
 app.use('/users', require('./routes/registerRoute'))
 app.use('/logins', require('./routes/loginRoute'))
