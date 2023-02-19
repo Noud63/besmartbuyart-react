@@ -12,15 +12,18 @@ const addDataToCollection = require('./seeder')
 const fs = require('fs')
 // const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 
+
 app.use(cors())
 app.use(express.json())
 dotenv.config()
+
 
 connectDB().then(() => {
    app.listen(process.env.REACT_APP_PORT, '0.0.0.0', () => {
       console.log(`Server running on port ${process.env.REACT_APP_PORT}`.yellow)
    })
 })
+
 
 addDataToCollection()
 
