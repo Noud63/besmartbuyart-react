@@ -18,15 +18,11 @@ app.use(express.json())
 dotenv.config()
 
 
-connectDB().then(() => {
-   app.listen(process.env.REACT_APP_PORT, () => {
-      console.log(`Server running on port ${process.env.REACT_APP_PORT}`.yellow)
-   })
-})
+connectDB()
 
 // addDataToCollection()
 
-app.use('/artworks', require('./routes/artworkRoute'))
+// app.use('/artworks', require('./routes/artworkRoute'))
 app.use('/users', require('./routes/registerRoute'))
 app.use('/logins', require('./routes/loginRoute'))
 app.use('/productinfo', require('./routes/productInfoRoute'))
@@ -40,6 +36,10 @@ app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
 app.get('*', (req, res) => {
    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
 });
+
+app.listen(process.env.REACT_APP_PORT, '0.0.0.0', () => {
+   console.log(`Server running on port ${process.env.REACT_APP_PORT}`.yellow)
+})
 
 // app.use(notFound)
 // app.use(errorHandler)
