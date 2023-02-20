@@ -4,7 +4,7 @@ const ProductInfos = require('../models/productInfoModel')
 
 const getProductInfo = async (req, res) => {
     const productinfos = await ProductInfos.find({})
-    res.json(productinfos)
+    res.send(productinfos)
 }
 
 module.exports = getProductInfo

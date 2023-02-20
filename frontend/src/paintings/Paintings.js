@@ -7,7 +7,7 @@ const Paintings = () => {
 
     let { paintings } = useGlobalContext()
 
-    console.log('What the F ', paintings) 
+    console.log('Returns HTML File?? =>', paintings) 
 
 return (
         <div>
