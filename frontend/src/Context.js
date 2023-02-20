@@ -24,7 +24,9 @@ const Context = ({ children }) => {
 
         const fetchData = async () => {
             try {
-                await axios.get('/productinfo').then(res => {
+                await axios.get('/productinfo', { headers : {
+                    "Content-type": "application/json"
+                }}).then(res => {
                     const data = res.data
                     setPaintings(data)
                     localStorage.setItem('PAINTINGS', JSON.stringify(data))
