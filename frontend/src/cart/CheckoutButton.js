@@ -1,7 +1,6 @@
 import React from 'react'
 import { useGlobalContext } from '../Context';
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 import cartStyles from './Cart.module.css'
 
 const CheckoutButton = ({ cart }) => {
@@ -9,8 +8,6 @@ const CheckoutButton = ({ cart }) => {
     let { loggedIn, userData } = useGlobalContext()
 
     const { login } = userData
-
-    const navigate = useNavigate()
 
     const checkOut = async () => {
         if (!loggedIn) {

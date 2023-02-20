@@ -1,6 +1,5 @@
 import React from 'react'
 import cartStyles from './Cart.module.css';
-import CheckoutButton2 from './CheckoutButton2'
 import CheckoutButton from './CheckoutButton'
 
 const CartFooter = ({ price, vat, total, cart }) => {
@@ -35,7 +34,6 @@ const CartFooter = ({ price, vat, total, cart }) => {
 
             </div>
             <CheckoutButton cart={cart}/>
-            {/* <CheckoutButton2 cart={cart}/> */}
         </div>
     )
 }
