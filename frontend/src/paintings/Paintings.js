@@ -7,6 +7,8 @@ const Paintings = () => {
 
     let { paintings } = useGlobalContext()
 
+    console.log(paintings)
+
 return (
         <div>
             <div className="wrapper">
