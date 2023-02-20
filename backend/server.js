@@ -31,13 +31,13 @@ app.use('/stripe', require('./routes/checkoutRoute'))
 
 // Place after routes
 // Cyclic, Render => Serving the frontend
-app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
+// app.use('/', express.static(path.join(__dirname, '../frontend', 'build')))
 
 // app.get('*', (req, res) => {
 //    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
 // });
 
-app.listen(process.env.REACT_APP_PORT, '0.0.0.0', () => {
+app.listen(process.env.REACT_APP_PORT,() => {
    console.log(`Server running on port ${process.env.REACT_APP_PORT}`.yellow)
 })
 
