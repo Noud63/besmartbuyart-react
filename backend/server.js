@@ -8,7 +8,7 @@ const path = require('path');
 const colors = require('colors')
 const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
-// const addDataToCollection = require('./seeder')
+const addDataToCollection = require('./seeder')
 // const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 
 app.use(cors())
@@ -17,7 +17,7 @@ dotenv.config()
 
 connectDB()
 
-// addDataToCollection()
+addDataToCollection()
 
 // app.use('/artworks', require('./routes/artworkRoute'))
 app.use('/users', require('./routes/registerRoute'))
