@@ -9,14 +9,11 @@ const colors = require('colors')
 const PORT = process.env.REACT_APP_PORT || 5000
 const connectDB = require('./config/db')
 // const addDataToCollection = require('./seeder')
-// const fs = require('fs')
 // const { notFound, errorHandler } = require('./middleware/errorMiddleware')
-
 
 app.use(cors())
 app.use(express.json())
 dotenv.config()
-
 
 connectDB()
 
