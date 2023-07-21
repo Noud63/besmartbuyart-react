@@ -30,5 +30,8 @@
     "nodemon": "^2.0.20",
     "npm": "^9.4.2",
     "stripe": "^11.10.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.1.2"
   }
 }
