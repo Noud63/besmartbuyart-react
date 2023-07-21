@@ -15,7 +15,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     if (!userExist) {
         console.log("Failed to login! Invalid username or password!");
-        return res.status(401).json({ message: 'Invalid username or password!' })
+        return res.status(401).json({ message: 'User doesn\'t exist!' })
     }
 
     if (userExist && (await bcrypt.compare(password, userExist.password))) {

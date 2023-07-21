@@ -6,6 +6,7 @@ const UserScreen = () => {
 
     let { userData } = useGlobalContext()
     const { loggedInUser } = userData
+
     return (
         <div className={styles.container}>
 
