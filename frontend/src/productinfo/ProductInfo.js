@@ -2,26 +2,26 @@ import React, { useCallback, useState, useEffect } from 'react'
 import styles from './ProductInfo.module.css'
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const ProductInfo = () => {
 
     const { id } = useParams();
     const [project, setProject] = useState({});
 
-    const getProduct = useCallback(() => {
-        let products = localStorage.getItem('PAINTINGS')
-        if (products) {
-            let item = JSON.parse(products).find(el => el._id === id)
-            setProject(item)
-            console.log(item)
+    const getInfo = useCallback(async() => {
+        try {
+            const res = await axios.get(`/productinfo/${id}`) 
+            setProject(res.data)
+        } catch (error) {
+            console.log(error)
         }
-    }, [id]);
+              
+    },[id])
 
-    useEffect(() => {
-        if (id) {
-            getProduct()
-        }
-    }, [getProduct, id]);
+    useEffect(()=> {
+          getInfo()
+    },[getInfo])
 
     
     return (
