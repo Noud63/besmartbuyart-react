@@ -38,7 +38,6 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
         localStorage.setItem('LIKES', JSON.stringify(liked))
     }
 
-
 return (
 
         <div className="item" key={_id}>
