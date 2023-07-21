@@ -16,14 +16,12 @@ const ProductInfo = () => {
         } catch (error) {
             console.log(error)
         }
-              
     },[id])
 
     useEffect(()=> {
           getInfo()
     },[getInfo])
 
-    
     return (
         <div className={styles.container}>
 
