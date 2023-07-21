@@ -71,9 +71,10 @@ const Header = () => {
 
     const logout = () => {
         setLoggedIn(false)
-        localStorage.removeItem('USERNAME')
-        localStorage.removeItem('LIKES')
-        localStorage.removeItem('CART')
+        localStorage.clear();
+        // localStorage.removeItem('USERNAME')
+        // localStorage.removeItem('LIKES')
+        // localStorage.removeItem('CART')
         paintings = paintings.map(el => {
             el.like = false
             return el

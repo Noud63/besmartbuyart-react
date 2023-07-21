@@ -40,8 +40,7 @@ const Footer = () => {
                         <span>{link}</span>
                         <span >Customer Service</span>
                     </div>
-                    
-                    <span className={footerstyle.service}>&copy; all rights reserved 2021</span>
+                <span className={footerstyle.service}>&copy; all rights reserved 2021</span>
                 </div>
             </div>
             
