@@ -37,8 +37,6 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
         setPaintings([...paintings])
         localStorage.setItem('PAINTINGS', JSON.stringify(paintings))
         localStorage.setItem('LIKES', JSON.stringify(liked))
-        
-        
     }
     
 return (
