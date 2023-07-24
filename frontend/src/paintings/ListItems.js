@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect, useCallback, useState} from 'react'
 import { useGlobalContext } from '../Context';
 // import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from 'react-router-dom'
@@ -22,8 +22,9 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
         localStorage.setItem("CART", JSON.stringify(cart));
     }
 
-    const toggleHeart = (id) => {
-        if (liked.some(el => el.id === _id)) {
+    const toggleHeart = (_id) => {
+        if (liked.some(el => el._id === _id)) {
+            alert('Liked already!')
             return
         }
         paintings = paintings.map(el => {
@@ -36,8 +37,10 @@ const ListItems = ({ _id, name, price, imgSrc, imgBig, like, technique }) => {
         setPaintings([...paintings])
         localStorage.setItem('PAINTINGS', JSON.stringify(paintings))
         localStorage.setItem('LIKES', JSON.stringify(liked))
+        
+        
     }
-
+    
 return (
 
         <div className="item" key={_id}>
@@ -67,7 +70,7 @@ return (
                 <div><span>Price: </span>&euro; {price},-</div>
             </div>
            
-           <Link to={`/productinfo/${_id}`} style={{textDecoration: 'none'}}>
+           <Link to={`/productinfo/${name}`} style={{textDecoration: 'none'}}>
             <div className="itemFooter">Product Info</div>
            </Link>
             

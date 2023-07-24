@@ -10,8 +10,9 @@ const jwt = require('jsonwebtoken')
 //@access         Public
 const loginUser = asyncHandler(async (req, res) => {
     const { username, password } = req.body
-
-    const userExist = await User.findOne({ username: username })
+console.log(req.body)
+    const userExist = await User.findOne({username})
+    
 
     if (!userExist) {
         console.log("Failed to login! Invalid username or password!");
@@ -19,11 +20,11 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 
     if (userExist && (await bcrypt.compare(password, userExist.password))) {
-        let login = await Logins.create({
-            id: userExist._id,
-            username: userExist.username,
-            password: userExist.password
-        })
+        // let login = await Logins.create({
+        //     _id: userExist._id,
+        //     username: userExist.username,
+        //     password: userExist.password
+        // })
 
         const loggedInUser = {
             firstname: userExist.firstname,
@@ -38,7 +39,9 @@ const loginUser = asyncHandler(async (req, res) => {
             token: generateToken(userExist._id)
         }
 
-        return res.status(200).json({ login, loggedInUser })
+        console.log(loggedInUser)
+
+        return res.status(200).json({loggedInUser })
 
     } else {
         res.status(400)

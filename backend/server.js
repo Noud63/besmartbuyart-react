@@ -17,9 +17,9 @@ dotenv.config()
 
 connectDB()
 
-addDataToCollection()
+// addDataToCollection()
 
-// app.use('/artworks', require('./routes/artworkRoute'))
+app.use('/artworks', require('./routes/artworkRoute'))
 app.use('/users', require('./routes/registerRoute'))
 app.use('/logins', require('./routes/loginRoute'))
 app.use('/productinfo', require('./routes/productInfoRoute'))

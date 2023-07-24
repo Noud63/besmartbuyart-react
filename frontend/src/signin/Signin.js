@@ -6,7 +6,7 @@ import { useGlobalContext } from '../Context'
 
 const Signin = () => {
 
-    let {setUserName, setLoggedIn, setUserData} = useGlobalContext()
+    let {setUserName, setLoggedIn, setUserData, loggedIn} = useGlobalContext()
 
     const [success, setSuccess] = React.useState(false);
     const [error, setError] = React.useState(false)
@@ -25,22 +25,24 @@ const Signin = () => {
 
 
     const loginData = async (data) => {
-
         try {
 
             const response = await axios.post('logins', data)
-
+            console.log(response.data.loggedInUser.firstname)
             if (response.data) {
                 setSuccess(true)
-                const loggedInUser = response.data.login.username
+                const loggedInUser = response.data.loggedInUser.firstname
                 setUserName(loggedInUser)
                 setLoggedIn(true)
-                setUserData(response.data)
-                localStorage.setItem('LOGGEDINUSER', JSON.stringify(response.data))
+                setUserData(response.data.loggedInUser)
+                localStorage.setItem('USERNAME', JSON.stringify(loggedInUser))
+                localStorage.setItem('LOGGEDINUSER', JSON.stringify(response.data.loggedInUser))
                }
         } catch (error) {
             setSuccess(false)
             setError(true)
+            setUserName("")
+            console.log({ message: error.message})
         }
     }
 
@@ -49,7 +51,7 @@ return (
             <div className={signinStyle.wrapper}>
                 <div className={signinStyle.login}>Signin</div>
 
-                <SigninForm loginData={loginData} />
+                <SigninForm loginData={loginData} loggedIn={loggedIn} setUserName={setUserName}/>
 
                 {success ? <div className={signinStyle.loginSuccess}>Logged in successfully</div> : ""}
 

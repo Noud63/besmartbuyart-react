@@ -2,7 +2,7 @@ import React from 'react'
 import signinStyle from './Signin.module.css'
 import { useForm } from "react-hook-form";
 
-const SigninForm = ({loginData}) => {
+const SigninForm = ({loginData, loggedIn, setUserName}) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -19,10 +19,7 @@ const SigninForm = ({loginData}) => {
 
     const onSubmit = (data) => {
         loginData(data)
-        console.log(data)
-        if(loginData){
-            localStorage.setItem('USERNAME', JSON.stringify(data.username))
-        }
+        
         reset()
     };
 

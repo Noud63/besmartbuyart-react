@@ -19,17 +19,17 @@ const Context = ({ children }) => {
 
 
     const loadProducts = useCallback(() => {
-
-        if (localStorage.getItem("PAINTINGS")) return
-
-        const fetchData = async () => {
+          const fetchData = async () => {
             try {
-                const res = await axios.get('/productinfo')
+                const res = await axios.get('/artworks')
                     const data = res.data
-                    setPaintings(data)
-                    localStorage.setItem('PAINTINGS', JSON.stringify(data))
                 
-            } catch (error) {
+                    if(localStorage.getItem("PAINTINGS")){
+                       setPaintings(JSON.parse(localStorage.getItem("PAINTINGS")))
+                    }else{
+                        setPaintings(data)
+                    }
+                } catch (error) {
                 console.log(error.message)
             }
         }
@@ -40,9 +40,9 @@ const Context = ({ children }) => {
         loadProducts()
     }, [loadProducts])
 
+
     const storage = useCallback(() => {
         localStorage.getItem("CART") ? setCart(JSON.parse(localStorage.getItem("CART"))) : setCart([]);
-        localStorage.getItem("PAINTINGS") ? setPaintings(JSON.parse(localStorage.getItem("PAINTINGS"))) : setPaintings([]);
         localStorage.getItem("LIKES") ? setLiked(JSON.parse(localStorage.getItem("LIKES"))) : setLiked([]);
         if (localStorage.getItem("USERNAME")) {
             setLoggedIn(true)
@@ -80,6 +80,8 @@ const Context = ({ children }) => {
     useEffect(() => {
         setTotals()
     }, [setTotals])
+
+    // console.log(userData)
 
     return (
         <allData.Provider value={{

@@ -57,10 +57,10 @@ const Likes = ({ showLikes, setShowLikes }) => {
         <div className={showLikes ? class1 : class2}>
     
             <div className="likesHeader">You like these paintings</div>
-            {liked && liked.map(item => {
+            {liked && liked.map((item, index)=> {
                 const { _id, name, imgSrc } = item;
                 return (
-                    <div className="like-item" onClick={() => removeItemFromLikeslist(_id)} key={_id}>
+                    <div className="like-item" onClick={() => removeItemFromLikeslist(_id)} key={index}>
                         <div className="like-info">
                             <img src={imgSrc} style={{ width: "100px" }} alt={name} className="picInCart" />
                         </div>
