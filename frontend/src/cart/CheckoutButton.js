@@ -27,7 +27,6 @@ const CheckoutButton = ({ cart }) => {
         } catch (error) {
             console.log(error)
         }
-
     }
 
     return (
