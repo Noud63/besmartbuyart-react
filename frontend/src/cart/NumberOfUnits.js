@@ -35,7 +35,6 @@ const NumberOfUnits = ({ id, cart, setCart, numberOfUnits, price }) => {
                     &euro; {price * numberOfUnits},-
             </div>
             </div>
-
         </>
     )
 }

@@ -26,9 +26,8 @@ const Signin = () => {
 
     const loginData = async (data) => {
         try {
-
             const response = await axios.post('logins', data)
-            console.log(response.data.loggedInUser.firstname)
+            console.log(response.data.loggedInUser)
             if (response.data) {
                 setSuccess(true)
                 const loggedInUser = response.data.loggedInUser.firstname

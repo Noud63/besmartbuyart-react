@@ -1,4 +1,4 @@
-import React,{useEffect, useCallback, useState} from 'react'
+import React from 'react'
 import { useGlobalContext } from '../Context';
 // import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from 'react-router-dom'

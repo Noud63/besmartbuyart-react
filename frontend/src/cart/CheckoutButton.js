@@ -9,14 +9,17 @@ const CheckoutButton = ({ cart }) => {
 
     const { login } = userData
 
+    console.log(userData)
+
     const checkOut = async () => {
         if (!loggedIn) {
             alert('Login first')
             return
         }
         try {
-            const res = await axios.post('/stripe/create-checkout-session', { cart, userId: login._id })
+            const res = await axios.post('/stripe/create-checkout-session', { cart, userId: userData._id })
             const url = res.data.url
+            console.log(url)
             if (url) {
                 window.location.href = url;
             }

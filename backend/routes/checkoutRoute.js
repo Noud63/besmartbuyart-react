@@ -11,6 +11,8 @@ app.use(express.static('public'))
 const YOUR_DOMAIN = 'http://localhost:3000';
 
 router.post('/create-checkout-session', async (req, res) => {
+
+    console.log(req.body.cart)
    
     const line_items = req.body.cart.map(product => {
         return {
@@ -18,13 +20,13 @@ router.post('/create-checkout-session', async (req, res) => {
                 currency: "eur",
                 product_data: {
                     name: product.name,
-                    images: ['http://www.noudvandun.com/images/discofull.jpg'],
+                    images: [`http://www.noudvandun.com/images/discofull.jpg`],
                     metadata: {
                         id: product._id
                     },
                     description: product.technique
                 },
-                unit_amount: product.price * 100,   // in cents = 20.00 dollar
+                unit_amount: product.price * 100,   // in cents 
             },
             quantity: product.numberOfUnits,
         }

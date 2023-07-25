@@ -33,7 +33,7 @@
     justify-content: space-between;
     flex-direction: row;
     background-color: rgb(75, 75, 75);
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0 6px 4px rgb(48, 48, 48);
     margin-bottom: 10px;
     margin-top: 10px;
@@ -257,7 +257,7 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(32, 32, 32);
-    padding: 30px;
+    padding: 20px;
     font-size: calc(18px + (28 - 18) * ((100vw - 320px) / (1980 - 320)));
     color: rgb(221, 125, 0);
 }
@@ -268,7 +268,7 @@
 
 @media only screen and (max-width: 1000px) {
   .cartContainer {
-  width: 94%;
+  width: 90%;
   }
 
   .itemsInCart {
@@ -281,5 +281,11 @@
 
   .cartFooter {
       width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .cartContainer {
+  width: 80%;
   }
 }

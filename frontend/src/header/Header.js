@@ -124,7 +124,7 @@ const Header = () => {
 
                 <div className={headerstyle.menu}>
 
-                    <div className={headerstyle.paintings} onClick={subMenuShowPaintings} ref={paintingsRef}>Artwork</div>
+                    <div className={headerstyle.paintings} onClick={subMenuShowPaintings} ref={paintingsRef}>Artworks</div>
 
                     <Link to="/cart" className={headerstyle.link}>
                         <div className={headerstyle.shopping_bag}>

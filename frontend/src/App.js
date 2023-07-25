@@ -36,7 +36,7 @@ function App() {
           <Route path='/checkout' element={<Checkout/>} />
           <Route path='/checkoutsuccess' element={<CheckOutSuccess/>} />
           {/* <Route path='/stripecheckout' component={StripeCheckOut} /> */}
-          <Route path='/payment' element={<Payment/>} />
+          {/* <Route path='/payment' element={<Payment/>} /> */}
           <Route path='/signin' element={<Signin/>} />
           <Route path='/signup' element={<Signup/>} />
           <Route path='/userscreen' element={<UserScreen/>} />
